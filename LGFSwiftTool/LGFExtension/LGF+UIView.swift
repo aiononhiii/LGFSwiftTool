@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIView {
     // MARK: - .x
-    public var lgf_X: CGFloat {
+    var lgf_X: CGFloat {
         get {
             return self.frame.origin.x
         }
@@ -23,7 +23,7 @@ public extension UIView {
     }
     
     // MARK: - .y
-    public var lgf_Y: CGFloat {
+    var lgf_Y: CGFloat {
         get {
             return self.frame.origin.y
         }
@@ -35,21 +35,21 @@ public extension UIView {
     }
     
     // MARK: - .maxX
-    public var lgf_MaxX: CGFloat {
+    var lgf_MaxX: CGFloat {
         get {
             return self.frame.maxX
         }
     }
     
     // MARK: - .maxY
-    public var lgf_MaxY: CGFloat {
+    var lgf_MaxY: CGFloat {
         get {
             return self.frame.maxY
         }
     }
     
     // MARK: - .centerX
-    public var lgf_CenterX: CGFloat {
+    var lgf_CenterX: CGFloat {
         get {
             return self.center.x
         }
@@ -59,7 +59,7 @@ public extension UIView {
     }
     
     // MARK: - .centerY
-    public var lgf_CenterY: CGFloat {
+    var lgf_CenterY: CGFloat {
         get {
             return self.center.y
         }
@@ -69,7 +69,7 @@ public extension UIView {
     }
     
     // MARK: - .width
-    public var lgf_Width: CGFloat {
+    var lgf_Width: CGFloat {
         get {
             return self.frame.size.width
         }
@@ -81,7 +81,7 @@ public extension UIView {
     }
     
     // MARK: - .height
-    public var lgf_Height: CGFloat {
+    var lgf_Height: CGFloat {
         get {
             return self.frame.size.height
         }
@@ -93,7 +93,7 @@ public extension UIView {
     }
     
     // MARK: - .size
-    public var lgf_Size: CGSize {
+    var lgf_Size: CGSize {
         get {
             return self.frame.size
         }
@@ -135,26 +135,26 @@ public extension UIView {
     }
     
     // MARK: - 设置右边框
-    public func lgf_AddRightBorder(_ width: CGFloat,_ borderColor: UIColor){
+    func lgf_AddRightBorder(_ width: CGFloat,_ borderColor: UIColor){
         let rect = CGRect(x: 0, y: self.frame.size.width - width, width: width, height: self.frame.size.height)
         lgf_DrawBorder(rect: rect, color: borderColor)
     }
     
     // MARK: - 设置左边框
-    public func lgf_AddLeftBorder(_ width: CGFloat,_ borderColor: UIColor){
+    func lgf_AddLeftBorder(_ width: CGFloat,_ borderColor: UIColor){
         let rect = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
         lgf_DrawBorder(rect: rect, color: borderColor)
     }
     
     // MARK: - 设置上边框
-    public func lgf_AddTopBorder(_ width: CGFloat,_ borderColor: UIColor){
+    func lgf_AddTopBorder(_ width: CGFloat,_ borderColor: UIColor){
         let rect = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
         lgf_DrawBorder(rect: rect, color: borderColor)
     }
     
     
     // MARK: - 设置底边框
-    public func lgf_AddBottomBorder(_ width: CGFloat,_ borderColor: UIColor){
+    func lgf_AddBottomBorder(_ width: CGFloat,_ borderColor: UIColor){
         let rect = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
         lgf_DrawBorder(rect: rect, color: borderColor)
     }
