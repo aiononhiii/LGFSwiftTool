@@ -24,9 +24,9 @@ class LGFAutoBigSmallView: UIView {
     var lgf_IsSmall: Bool! {
         didSet {
             if lgf_IsSmall {
-                self.lgf_ToBig()
-            } else {
                 self.lgf_ToSmall()
+            } else {
+                self.lgf_ToBig()
             }
         }
     }
@@ -75,8 +75,6 @@ class LGFAutoBigSmallView: UIView {
         }
     }
     
-    
-    
     // 变小
     fileprivate func lgf_ToSmall() -> Void {
         self.lgf_IsHorizontal = false
@@ -88,7 +86,6 @@ class LGFAutoBigSmallView: UIView {
             self.lgf_FrameFinish?(true)
         }
     }
-    
     
     // 变大
     fileprivate func lgf_ToBig() -> Void {
@@ -170,7 +167,9 @@ class LGFAutoBigSmallView: UIView {
     }
     
     @objc func lgf_TapEvent(sender:UITapGestureRecognizer) {
-        self.lgf_IsSmall = self.frame == self.lgf_SmallFrame
+        if self.frame == self.lgf_SmallFrame {
+            self.lgf_IsSmall = false
+        }
     }
     
     func lgf_Remove() -> Void {

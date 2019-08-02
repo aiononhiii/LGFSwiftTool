@@ -9,7 +9,9 @@
 import UIKit
 
 class TestView: UIView {
-
+    
+    var select: ((String) -> Void)!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         congifUI()
@@ -26,6 +28,10 @@ class TestView: UIView {
         label.textColor = UIColor.white
         label.numberOfLines = 0
         self.addSubview(label)
+        label.lgf_AddTap(target: self, action: #selector(click))
     }
     
+    @objc func click() -> Void {
+        select?("")
+    }
 }
