@@ -14,7 +14,7 @@ public extension UIView {
     var lgf_X: CGFloat {
         get {
             return self.frame.origin.x
-        } 
+        }
         set {
             var rect = self.frame
             rect.origin.x = newValue
