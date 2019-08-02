@@ -17,6 +17,7 @@
 		18309F2122F407AF002CCDE9 /* LGF+Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18309F2022F407AF002CCDE9 /* LGF+Xib.swift */; };
 		18309F2322F412AA002CCDE9 /* LGF+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18309F2222F412AA002CCDE9 /* LGF+CGRect.swift */; };
 		18309F2522F4138E002CCDE9 /* LGF+Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18309F2422F4138E002CCDE9 /* LGF+Timer.swift */; };
+		18309F2722F4344A002CCDE9 /* LGF+UISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18309F2622F4344A002CCDE9 /* LGF+UISlider.swift */; };
 		18592E7622EEDFAE0026D84E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E7522EEDFAE0026D84E /* AppDelegate.swift */; };
 		18592E7822EEDFAE0026D84E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E7722EEDFAE0026D84E /* ViewController.swift */; };
 		18592E7B22EEDFAE0026D84E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18592E7922EEDFAE0026D84E /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		18309F2022F407AF002CCDE9 /* LGF+Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+Xib.swift"; sourceTree = "<group>"; };
 		18309F2222F412AA002CCDE9 /* LGF+CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+CGRect.swift"; sourceTree = "<group>"; };
 		18309F2422F4138E002CCDE9 /* LGF+Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+Timer.swift"; sourceTree = "<group>"; };
+		18309F2622F4344A002CCDE9 /* LGF+UISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UISlider.swift"; sourceTree = "<group>"; };
 		18592E7222EEDFAE0026D84E /* LGFSwiftTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LGFSwiftTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18592E7522EEDFAE0026D84E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18592E7722EEDFAE0026D84E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				18309F2022F407AF002CCDE9 /* LGF+Xib.swift */,
 				18309F2222F412AA002CCDE9 /* LGF+CGRect.swift */,
 				18309F2422F4138E002CCDE9 /* LGF+Timer.swift */,
+				18309F2622F4344A002CCDE9 /* LGF+UISlider.swift */,
 			);
 			path = LGFExtension;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				18592E7622EEDFAE0026D84E /* AppDelegate.swift in Sources */,
 				18F5529B22F3CEB6006DA8E8 /* LGF+Array.swift in Sources */,
 				18309F1222F3E68A002CCDE9 /* LGF+Dictionary.swift in Sources */,
+				18309F2722F4344A002CCDE9 /* LGF+UISlider.swift in Sources */,
 				18F5529722F3C8ED006DA8E8 /* LGF+UIImage.swift in Sources */,
 				18F5528522F16570006DA8E8 /* LGF+UIApplication.swift in Sources */,
 				18309F2322F412AA002CCDE9 /* LGF+CGRect.swift in Sources */,

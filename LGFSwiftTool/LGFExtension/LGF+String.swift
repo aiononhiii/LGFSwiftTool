@@ -79,16 +79,17 @@ public extension String {
     
     // MARK: - 自复还是否为空
     func lgf_IsBlank() -> Bool {
-        if self.trimmingCharacters(in: .whitespaces).isEmpty {
-            return true
-        } else {
-            return false
-        }
+        return self.trimmingCharacters(in: .whitespaces).isEmpty
     }
     
     // MARK: - 删除空字符串
     mutating func lgf_RemoveBlank() -> String {
         return self.trimmingCharacters(in: .whitespaces)
+    }
+    
+    // MARK: -  String 是否是 number
+    func lgf_IsNumber() -> Bool {
+        return NumberFormatter().number(from: self) != nil ? true : false
     }
     
     // MARK: - 获取当前时间的 时间戳
@@ -160,6 +161,24 @@ public extension String {
             let to = String.Index(to16, within: self)
             else { return nil }
         return from ..< to
+    }
+    
+    // MARK: -  base64 转 string
+    init ? (base64: String) {
+        let pad = String(repeating: "=", count: base64.count % 4)
+        let base64Padded = base64 + pad
+        if let decodedData = Data(base64Encoded: base64Padded, options: NSData.Base64DecodingOptions(rawValue: 0)), let decodedString = NSString(data: decodedData, encoding: String.Encoding.utf8.rawValue) {
+            self.init(decodedString)
+            return
+        }
+        return nil
+    }
+    
+    // MARK: -  string 转 base64
+    var base64: String {
+        let plainData = (self as NSString).data(using: String.Encoding.utf8.rawValue)
+        let base64String = plainData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        return base64String
     }
 }
 
