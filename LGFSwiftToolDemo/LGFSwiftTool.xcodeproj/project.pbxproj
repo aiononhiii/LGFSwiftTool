@@ -23,7 +23,7 @@
 		18592E7B22EEDFAE0026D84E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18592E7922EEDFAE0026D84E /* Main.storyboard */; };
 		18592E7D22EEDFB20026D84E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18592E7C22EEDFB20026D84E /* Assets.xcassets */; };
 		18592E8022EEDFB20026D84E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18592E7E22EEDFB20026D84E /* LaunchScreen.storyboard */; };
-		18592E8F22EEE03F0026D84E /* LGFSwiftTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8822EEE03F0026D84E /* LGFSwiftTool.swift */; };
+		18592E8F22EEE03F0026D84E /* LGFPCHTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8822EEE03F0026D84E /* LGFPCHTool.swift */; };
 		18592E9022EEE03F0026D84E /* LGF+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8A22EEE03F0026D84E /* LGF+String.swift */; };
 		18592E9122EEE03F0026D84E /* LGF+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8B22EEE03F0026D84E /* LGF+UIColor.swift */; };
 		18592E9222EEE03F0026D84E /* LGF+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8C22EEE03F0026D84E /* LGF+UIView.swift */; };
@@ -63,7 +63,7 @@
 		18592E7C22EEDFB20026D84E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18592E7F22EEDFB20026D84E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18592E8122EEDFB20026D84E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18592E8822EEE03F0026D84E /* LGFSwiftTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGFSwiftTool.swift; sourceTree = "<group>"; };
+		18592E8822EEE03F0026D84E /* LGFPCHTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGFPCHTool.swift; sourceTree = "<group>"; };
 		18592E8A22EEE03F0026D84E /* LGF+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGF+String.swift"; sourceTree = "<group>"; };
 		18592E8B22EEE03F0026D84E /* LGF+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGF+UIColor.swift"; sourceTree = "<group>"; };
 		18592E8C22EEE03F0026D84E /* LGF+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGF+UIView.swift"; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				18309F1522F3F326002CCDE9 /* LGFMethod */,
 				18F5529122F2EC9A006DA8E8 /* LGFView */,
 				18592E8922EEE03F0026D84E /* LGFExtension */,
-				18592E8822EEE03F0026D84E /* LGFSwiftTool.swift */,
+				18592E8822EEE03F0026D84E /* LGFPCHTool.swift */,
 			);
 			name = LGFSwiftTool;
 			path = ../LGFSwiftTool;
@@ -293,7 +293,7 @@
 				18F5529522F3C80E006DA8E8 /* LGF+UINavigationController.swift in Sources */,
 				18309F1D22F3FFFF002CCDE9 /* LGF+CaseIterable.swift in Sources */,
 				18309F1422F3EE96002CCDE9 /* LGF+URL.swift in Sources */,
-				18592E8F22EEE03F0026D84E /* LGFSwiftTool.swift in Sources */,
+				18592E8F22EEE03F0026D84E /* LGFPCHTool.swift in Sources */,
 				18F5529922F3CD12006DA8E8 /* LGF+NSObject.swift in Sources */,
 				18F5529022F2DAB6006DA8E8 /* LGF+UIDevice.swift in Sources */,
 				18F5529322F3C58F006DA8E8 /* LGF+UIViewController.swift in Sources */,
