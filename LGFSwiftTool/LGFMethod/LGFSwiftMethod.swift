@@ -6,7 +6,9 @@
 //  Copyright © 2019 William_Xue. All rights reserved.
 //
 
+#if canImport(Foundation)
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 // MARK: -  UICollectionViewCell 长按拖动
@@ -118,3 +120,7 @@ func lgf_DecimalPointInputSpecificationWithTextField(textField: UITextField, str
     
     return false
 }
+
+#endif // canImport(UIKit)
+
+#endif // canImport(Foundation)

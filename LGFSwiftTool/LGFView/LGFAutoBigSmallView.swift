@@ -6,6 +6,7 @@
 //  Copyright © 2019 来国锋. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 let lgf_AutoBigSmallView = LGFAutoBigSmallView()
@@ -177,3 +178,5 @@ class LGFAutoBigSmallView: UIView {
     }
     
 }
+
+#endif // canImport(UIKit)

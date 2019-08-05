@@ -6,7 +6,9 @@
 //  Copyright © 2019 来国锋. All rights reserved.
 //
 
+#if canImport(Foundation)
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 // MARK: -  当前系统版本
@@ -109,3 +111,7 @@ func lgf_RandomGrayColor() -> UIColor {
 func lgf_Log(_ items: Any){
     debugPrint(items)
 }
+
+#endif // canImport(UIKit)
+
+#endif // canImport(Foundation)
