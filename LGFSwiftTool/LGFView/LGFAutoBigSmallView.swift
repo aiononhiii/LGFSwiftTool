@@ -38,23 +38,27 @@ class LGFAutoBigSmallView: UIView {
     var lgf_IsHorizontal: Bool! {
         didSet {
             if lgf_IsHorizontal {
-                if self.lgf_IsBigHorizontal {
+                if lgf_IsBigHorizontal {
                     UIDevice.lgf_SwitchNewOrientation(.landscapeRight, animated: false)
                     self.frame = UIApplication.shared.keyWindow!.bounds
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.05 : 0.0)) {
+                    self.lgf_FrameFinish?(false, true)
                 }
             } else {
                 if lgf_IsBigHorizontal {
                     UIDevice.lgf_SwitchNewOrientation(.portrait, animated: false)
+                    self.frame = UIApplication.shared.keyWindow!.bounds
                 }
             }
         }
     }
     
     // 放大缩小是否完毕
-    var lgf_FrameFinish: ((_ isSmall: Bool) -> Void)?
+    var lgf_FrameFinish: ((_ isSmall: Bool, _ isFinish: Bool) -> Void)?
     
     // 展示放大缩小 view
-    func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ isSmall: Bool) -> Void) -> Void {
+    func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ isSmall: Bool, _ isFinish: Bool) -> Void) -> Void {
         self.lgf_AddPan(target: self, action: #selector(lgf_PanEvent(sender:)))
         self.lgf_AddTap(target: self, action: #selector(lgf_TapEvent(sender:)))
         frame = UIApplication.shared.keyWindow!.bounds
@@ -69,21 +73,19 @@ class LGFAutoBigSmallView: UIView {
             self.transform = CGAffineTransform.identity
         }) { (finish) in
             self.lgf_IsHorizontal = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.03 : 0.0)) {
-                self.lgf_FrameFinish?(false)
-            }
         }
     }
     
     // 变小
     fileprivate func lgf_ToSmall() -> Void {
         self.lgf_IsHorizontal = false
+        self.lgf_FrameFinish?(true, false)
         lgf_AutoBigSmallView.subviews.forEach { $0.removeFromSuperview() }
         UIView.animate(withDuration: 0.3, animations: {
             self.frame = self.lgf_SmallFrame
             self.layer.cornerRadius = self.lgf_SmallCornerRadius
         }) { (finish) in
-            self.lgf_FrameFinish?(true)
+            self.lgf_FrameFinish?(true, true)
         }
     }
     
@@ -95,9 +97,6 @@ class LGFAutoBigSmallView: UIView {
             self.layer.cornerRadius = 0.0
         }) { (finish) in
             self.lgf_IsHorizontal = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.03 : 0.0)) {
-                self.lgf_FrameFinish?(false)
-            }
         }
     }
     
