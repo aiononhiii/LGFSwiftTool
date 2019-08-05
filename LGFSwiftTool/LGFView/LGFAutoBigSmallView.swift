@@ -40,7 +40,7 @@ class LGFAutoBigSmallView: UIView {
         didSet {
             if lgf_IsHorizontal {
                 if lgf_IsBigHorizontal {
-                    UIDevice.lgf_SwitchNewOrientation(.landscapeRight, animated: false)
+                    LGF.SwitchNewOrientation(.landscapeRight, animated: false)
                     self.frame = UIApplication.shared.keyWindow!.bounds
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.05 : 0.0)) {
@@ -48,7 +48,7 @@ class LGFAutoBigSmallView: UIView {
                 }
             } else {
                 if lgf_IsBigHorizontal {
-                    UIDevice.lgf_SwitchNewOrientation(.portrait, animated: false)
+                    LGF.SwitchNewOrientation(.portrait, animated: false)
                     self.frame = UIApplication.shared.keyWindow!.bounds
                 }
             }
