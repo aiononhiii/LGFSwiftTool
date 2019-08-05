@@ -12,12 +12,12 @@ import UIKit
 public extension UIScrollView {
     
     // MARK: -  获取横向滚动index
-    public func lgf_HorizontalIndex() -> Int {
+    func lgf_HorizontalIndex() -> Int {
         return Int(self.contentOffset.x / self.bounds.size.width)
     }
     
     // MARK: -  获取竖向滚动index
-    public func lgf_VerticalIndex() -> Int {
+    func lgf_VerticalIndex() -> Int {
         return Int(self.contentOffset.y / self.bounds.size.height)
     }
     
