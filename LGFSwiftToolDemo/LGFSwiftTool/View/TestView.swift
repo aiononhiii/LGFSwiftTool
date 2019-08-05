@@ -10,8 +10,6 @@ import UIKit
 
 class TestView: UIView {
     
-    var select: ((String) -> Void)!
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         congifUI()
@@ -32,6 +30,6 @@ class TestView: UIView {
     }
     
     @objc func click() -> Void {
-        select?("")
+        lgf_AutoBigSmallView.lgf_IsSmall = true
     }
 }

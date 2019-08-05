@@ -9,9 +9,18 @@
 #if canImport(UIKit)
 import UIKit
 
-let lgf_AutoBigSmallView = LGFAutoBigSmallView()
+public let lgf_AutoBigSmallView = LGFAutoBigSmallView()
 
-class LGFAutoBigSmallView: UIView {
+public enum lgf_BigSmallViewType {
+    case small// 准备缩小
+    case smallFinish// 缩小完成
+    case smallRemove// 缩小删除
+    case big// 准备放大
+    case bigFinish// 放大完成
+    case bigRemove// 放大删除
+}
+
+public class LGFAutoBigSmallView: UIView {
     
     // 小屏 frame
     fileprivate var lgf_SmallFrame: CGRect!
@@ -43,8 +52,9 @@ class LGFAutoBigSmallView: UIView {
                     UIDevice.lgf_SwitchNewOrientation(.landscapeRight, animated: false)
                     self.frame = UIApplication.shared.keyWindow!.bounds
                 }
+                lgf_FrameFinish?(.big)
                 DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.05 : 0.0)) {
-                    self.lgf_FrameFinish?(false, true)
+                    self.lgf_FrameFinish?(.bigFinish)
                 }
             } else {
                 if lgf_IsBigHorizontal {
@@ -56,10 +66,10 @@ class LGFAutoBigSmallView: UIView {
     }
     
     // 放大缩小是否完毕
-    var lgf_FrameFinish: ((_ isSmall: Bool, _ isFinish: Bool) -> Void)?
+    var lgf_FrameFinish: ((_ type: lgf_BigSmallViewType) -> Void)?
     
     // 展示放大缩小 view
-    func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ isSmall: Bool, _ isFinish: Bool) -> Void) -> Void {
+    func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
         self.lgf_AddPan(target: self, action: #selector(lgf_PanEvent(sender:)))
         self.lgf_AddTap(target: self, action: #selector(lgf_TapEvent(sender:)))
         frame = UIApplication.shared.keyWindow!.bounds
@@ -69,6 +79,10 @@ class LGFAutoBigSmallView: UIView {
         lgf_IsBigHorizontal = isBigHorizontal
         lgf_FrameFinish = frameFinish
         UIApplication.shared.keyWindow?.addSubview(self)
+        lgf_Present()
+    }
+    
+    func lgf_Present() -> Void {
         transform = CGAffineTransform.init(translationX: UIApplication.shared.keyWindow!.bounds.width, y: 0.0)
         UIView.animate(withDuration: 0.3, animations: {
             self.transform = CGAffineTransform.identity
@@ -77,22 +91,39 @@ class LGFAutoBigSmallView: UIView {
         }
     }
     
+    func lgf_Dismiss() -> Void {
+        if self.frame == self.lgf_SmallFrame {
+            lgf_FrameFinish?(.smallRemove)
+            lgf_Remove()
+        } else {
+            self.lgf_IsHorizontal = false
+            self.subviews.forEach { $0.removeFromSuperview() }
+            UIView.animate(withDuration: 0.3, animations: {
+                self.transform = CGAffineTransform.init(translationX: UIApplication.shared.keyWindow!.bounds.width, y: 0.0)
+            }) { (finish) in
+                self.transform = CGAffineTransform.identity
+                self.lgf_FrameFinish?(.bigRemove)
+                self.lgf_Remove()
+            }
+        }
+    }
+    
     // 变小
     fileprivate func lgf_ToSmall() -> Void {
         self.lgf_IsHorizontal = false
-        self.lgf_FrameFinish?(true, false)
-        lgf_AutoBigSmallView.subviews.forEach { $0.removeFromSuperview() }
+        lgf_FrameFinish?(.small)
+        self.subviews.forEach { $0.removeFromSuperview() }
         UIView.animate(withDuration: 0.3, animations: {
             self.frame = self.lgf_SmallFrame
             self.layer.cornerRadius = self.lgf_SmallCornerRadius
         }) { (finish) in
-            self.lgf_FrameFinish?(true, true)
+            self.lgf_FrameFinish?(.smallFinish)
         }
     }
     
     // 变大
     fileprivate func lgf_ToBig() -> Void {
-        lgf_AutoBigSmallView.subviews.forEach { $0.removeFromSuperview() }
+        self.subviews.forEach { $0.removeFromSuperview() }
         UIView.animate(withDuration: 0.3, animations: {
             self.frame = UIApplication.shared.keyWindow!.bounds
             self.layer.cornerRadius = 0.0
@@ -173,8 +204,10 @@ class LGFAutoBigSmallView: UIView {
     }
     
     func lgf_Remove() -> Void {
-        lgf_AutoBigSmallView.subviews.forEach { $0.removeFromSuperview() }
-        self.removeFromSuperview()
+        if self.superview != nil {
+            self.subviews.forEach { $0.removeFromSuperview() }
+            self.removeFromSuperview()
+        }
     }
     
 }

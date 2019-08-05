@@ -28,11 +28,11 @@ class TwoViewController: UIViewController {
         //        self.view.addSubview(vc3.view)
         //        self.addChild(vc3)
         lgf_RunTimer(self, S: 0.7) { (timer) in
-            debugPrint(123123)
+//            debugPrint(123123)
         }
         
-        lgf_After(S: 3.0) {
-            
+        lgf_After(S: 7.0) {
+            lgf_AutoBigSmallView.lgf_Dismiss()
         }
     }
     
@@ -41,24 +41,26 @@ class TwoViewController: UIViewController {
     }
     
     @IBAction func showHView(_ sender: UIButton) {
-        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true) { [weak self] (isSmall, isFinish) in
-            if isSmall {
-                if isFinish {
-                    debugPrint("缩小完毕")
-                } else {
-                    debugPrint("准备缩小")
-                }
-            } else {
+        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true) { (type) in
+            if type == .small {
+                debugPrint("准备缩小")
+            } else if type == .smallFinish {
+                debugPrint("缩小完毕")
+            } else if type == .smallRemove {
+                debugPrint("缩小删除")
+            } else if type == .big {
+                debugPrint("准备变大")
+            } else if type == .bigFinish {
                 let view = TestView.init(frame: lgf_AutoBigSmallView.bounds)
                 lgf_AutoBigSmallView.addSubview(view)
-                view.select = self!.select(_:)
+                debugPrint("变大完毕")
+            } else if type == .bigRemove {
+                debugPrint("变大删除")
             }
         }
     }
     
-    func select(_: String) {
-        lgf_AutoBigSmallView.lgf_IsSmall = true
-    }
+    
     
     /*
      // MARK: - Navigation
