@@ -1,15 +1,15 @@
 //
-//  TestView.swift
+//  TestViewTwo.swift
 //  LGFSwiftTool
 //
-//  Created by apple on 2019/8/1.
+//  Created by apple on 2019/8/5.
 //  Copyright © 2019 来国锋. All rights reserved.
 //
 
 import UIKit
 
-class TestView: UIView {
-    
+class TestViewTwo: UIView {
+
     var label: UILabel!
     
     override init(frame: CGRect) {
@@ -28,8 +28,8 @@ class TestView: UIView {
     
     func congifUI() -> Void {
         label = UILabel.init(frame: CGRect.zero)
-        label.text = "init(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implemented"
-        label.backgroundColor = UIColor.red
+        label.text = "111232534554512325345545123253455451"
+        label.backgroundColor = UIColor.blue
         label.textColor = UIColor.white
         label.numberOfLines = 0
         self.addSubview(label)
@@ -37,6 +37,7 @@ class TestView: UIView {
     }
     
     @objc func click() -> Void {
-        lgf_AutoBigSmallView.lgf_IsSmall = true
+        lgf_AutoBigSmallView.lgf_IsSmall = false
     }
+
 }

@@ -9,7 +9,19 @@
 #if canImport(UIKit)
 import UIKit
 
+private var lgf_ViewNameKey: String = ""
+
 public extension UIView {
+    
+    // MARK: -  给 view 定义一个字符串名字
+    var lgf_ViewName: String? {
+        get {
+            return (objc_getAssociatedObject(self, &lgf_ViewNameKey) as? String)
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &lgf_ViewNameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
+        }
+    }
     
     // MARK: -  获取控件相对于屏幕 Rect
     func lgf_GetWindowRect() -> CGRect {

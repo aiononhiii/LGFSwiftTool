@@ -69,7 +69,7 @@ public class LGFAutoBigSmallView: UIView {
     var lgf_FrameFinish: ((_ type: lgf_BigSmallViewType) -> Void)?
     
     // 展示放大缩小 view
-    public func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
+    public func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, bigView: UIView, smallView: UIView, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
         self.lgf_AddPan(target: self, action: #selector(lgf_PanEvent(sender:)))
         self.lgf_AddTap(target: self, action: #selector(lgf_TapEvent(sender:)))
         frame = UIApplication.shared.keyWindow!.bounds
@@ -79,6 +79,9 @@ public class LGFAutoBigSmallView: UIView {
         lgf_IsBigHorizontal = isBigHorizontal
         lgf_FrameFinish = frameFinish
         UIApplication.shared.keyWindow?.addSubview(self)
+        self.addSubview(bigView)
+        self.addSubview(smallView)
+        lgf_AutoHide()
         lgf_Present()
     }
     
@@ -97,14 +100,8 @@ public class LGFAutoBigSmallView: UIView {
             lgf_Remove()
         } else {
             self.lgf_IsHorizontal = false
-            self.subviews.forEach { $0.removeFromSuperview() }
-            UIView.animate(withDuration: 0.3, animations: {
-                self.transform = CGAffineTransform.init(translationX: UIApplication.shared.keyWindow!.bounds.width, y: 0.0)
-            }) { (finish) in
-                self.transform = CGAffineTransform.identity
-                self.lgf_FrameFinish?(.bigRemove)
-                self.lgf_Remove()
-            }
+            self.lgf_FrameFinish?(.bigRemove)
+            self.lgf_Remove()
         }
     }
     
@@ -112,7 +109,7 @@ public class LGFAutoBigSmallView: UIView {
     fileprivate func lgf_ToSmall() -> Void {
         self.lgf_IsHorizontal = false
         lgf_FrameFinish?(.small)
-        self.subviews.forEach { $0.removeFromSuperview() }
+        lgf_AutoHide()
         UIView.animate(withDuration: 0.3, animations: {
             self.frame = self.lgf_SmallFrame
             self.layer.cornerRadius = self.lgf_SmallCornerRadius
@@ -123,7 +120,7 @@ public class LGFAutoBigSmallView: UIView {
     
     // 变大
     fileprivate func lgf_ToBig() -> Void {
-        self.subviews.forEach { $0.removeFromSuperview() }
+        lgf_AutoHide()
         UIView.animate(withDuration: 0.3, animations: {
             self.frame = UIApplication.shared.keyWindow!.bounds
             self.layer.cornerRadius = 0.0
@@ -200,6 +197,12 @@ public class LGFAutoBigSmallView: UIView {
     @objc func lgf_TapEvent(sender:UITapGestureRecognizer) {
         if self.frame == self.lgf_SmallFrame {
             self.lgf_IsSmall = false
+        }
+    }
+    
+    func lgf_AutoHide() {
+        self.subviews.forEach {
+            $0.isHidden = true
         }
     }
     
