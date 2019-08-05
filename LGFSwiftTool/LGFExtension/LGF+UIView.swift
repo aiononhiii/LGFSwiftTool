@@ -10,6 +10,12 @@
 import UIKit
 
 public extension UIView {
+    
+    // MARK: -  获取控件相对于屏幕 Rect
+    public func lgf_GetWindowRect() -> CGRect {
+        return self.convert(self.bounds, to: UIApplication.shared.windows.first)
+    }
+    
     // MARK: - .x
     var lgf_X: CGFloat {
         get {

@@ -34,6 +34,17 @@ public extension UIColor {
     convenience init(_ lgf_Red: Int, _ lgf_Green: Int, _ lgf_Blue: Int, _ lgf_Alpha: Double = 1.0) {
         self.init(red: CGFloat(lgf_Red) / 255, green: CGFloat(lgf_Green) / 255, blue: CGFloat(lgf_Blue) / 255, alpha: CGFloat(lgf_Alpha))
     }
+    
+    // MARK: -  随机颜色
+    public func lgf_RandomColor() -> UIColor {
+        return UIColor.init(Int(arc4random() % 256 / 255), Int(arc4random() % 256 / 255), Int(arc4random() % 256 / 255))
+    }
+    
+    // MARK: -  随机灰度颜色
+    public func lgf_RandomGrayColor() -> UIColor {
+        let randomNumber = (Int(arc4random() % 200) + 55) / 255
+        return UIColor.init(randomNumber, randomNumber, randomNumber)
+    }
 }
 
 public extension UIColor {
