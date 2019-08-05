@@ -140,10 +140,10 @@
 		18592E8722EEE03F0026D84E /* LGFSwiftTool */ = {
 			isa = PBXGroup;
 			children = (
+				18862E5722F7CF0300629984 /* LGFPch */,
 				18309F1522F3F326002CCDE9 /* LGFMethod */,
 				18F5529122F2EC9A006DA8E8 /* LGFView */,
 				18592E8922EEE03F0026D84E /* LGFExtension */,
-				18592E8822EEE03F0026D84E /* LGFPCHTool.swift */,
 			);
 			name = LGFSwiftTool;
 			path = ../LGFSwiftTool;
@@ -177,6 +177,14 @@
 				18309F2622F4344A002CCDE9 /* LGF+UISlider.swift */,
 			);
 			path = LGFExtension;
+			sourceTree = "<group>";
+		};
+		18862E5722F7CF0300629984 /* LGFPch */ = {
+			isa = PBXGroup;
+			children = (
+				18592E8822EEE03F0026D84E /* LGFPCHTool.swift */,
+			);
+			path = LGFPch;
 			sourceTree = "<group>";
 		};
 		18F5528A22F2C896006DA8E8 /* View */ = {
