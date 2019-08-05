@@ -9,13 +9,13 @@
 #if canImport(Foundation)
 import Foundation
 
-enum lgf_UnitStrType {
+public enum lgf_UnitStrType {
     case lgf_SmallPinyin// 小写拼音 (q w y)
     case lgf_BigPinyin// 大写拼音 (Q W Y)
     case lgf_CCharacter// 汉字 (千 万 亿)
 }
 
-enum lgf_UnitType {
+public enum lgf_UnitType {
     case lgf_OnlyQian// 只带 千 (5千 100千 100000千）
     case lgf_OnlyWan// 只带 万（0.5万 10万 10000万）
     case lgf_QianAndWan// 带 千和万 (5千 10万 10000万）
@@ -23,7 +23,7 @@ enum lgf_UnitType {
     case lgf_QianAndWanAndYi// 带 千和万和亿 (5千 10万 1亿）
 }
 
-enum lgf_TimeFormatType {
+public enum lgf_TimeFormatType {
     case lgf_MS// 00:00
     case lgf_HMS// 00:00:00
     case lgf_CCharacterMS// 00分00秒

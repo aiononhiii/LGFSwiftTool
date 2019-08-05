@@ -31,7 +31,7 @@ public class LGFAutoBigSmallView: UIView {
     var lgf_PanStartPoint: CGPoint!
     
     // 是否是小屏状态
-    var lgf_IsSmall: Bool! {
+    public var lgf_IsSmall: Bool! {
         didSet {
             if lgf_IsSmall {
                 self.lgf_ToSmall()
@@ -69,7 +69,7 @@ public class LGFAutoBigSmallView: UIView {
     var lgf_FrameFinish: ((_ type: lgf_BigSmallViewType) -> Void)?
     
     // 展示放大缩小 view
-    func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
+    public func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
         self.lgf_AddPan(target: self, action: #selector(lgf_PanEvent(sender:)))
         self.lgf_AddTap(target: self, action: #selector(lgf_TapEvent(sender:)))
         frame = UIApplication.shared.keyWindow!.bounds
@@ -82,7 +82,7 @@ public class LGFAutoBigSmallView: UIView {
         lgf_Present()
     }
     
-    func lgf_Present() -> Void {
+    public func lgf_Present() -> Void {
         transform = CGAffineTransform.init(translationX: UIApplication.shared.keyWindow!.bounds.width, y: 0.0)
         UIView.animate(withDuration: 0.3, animations: {
             self.transform = CGAffineTransform.identity
@@ -91,7 +91,7 @@ public class LGFAutoBigSmallView: UIView {
         }
     }
     
-    func lgf_Dismiss() -> Void {
+    public func lgf_Dismiss() -> Void {
         if self.frame == self.lgf_SmallFrame {
             lgf_FrameFinish?(.smallRemove)
             lgf_Remove()
