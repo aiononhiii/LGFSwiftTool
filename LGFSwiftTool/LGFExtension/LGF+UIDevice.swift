@@ -38,12 +38,12 @@ public extension UIDevice {
     }
     
     // MARK: -  NavigationBar 高度
-    class func lgf_RealNavigationBarH() -> CGFloat {
+    class func lgf_NavBarH() -> CGFloat {
         return lgf_IsIphoneX() ? 88.0 : 64.0
     }
     
     // MARK: -  TabBar 高度
-    class func lgf_RealTabBarH() -> CGFloat {
+    class func lgf_TabBarH() -> CGFloat {
         return lgf_IsIphoneX() ? 83.0 : 49.0
     }
     
