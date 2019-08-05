@@ -9,19 +9,21 @@
 #if canImport(UIKit)
 import UIKit
 
-// MARK: -  屏幕宽度
-let lgf_ScreenW = UIScreen.main.bounds.width
+public class LGF: UIDevice {}
 
-// MARK: -  屏幕高度
-let lgf_ScreenH = UIScreen.main.bounds.height
-
-public extension UIDevice {
+extension LGF {
+    
+    // MARK: -  屏幕宽度
+    static let ScreenW = UIScreen.main.bounds.width
+    
+    // MARK: -  屏幕高度
+    static let ScreenH = UIScreen.main.bounds.height
     
     // MARK: -  判断是否是 IphoneX 刘海机型
-    class func lgf_IsIphoneX() -> Bool {
-        if (lgf_ScreenW == 375 && lgf_ScreenH == 812) || (lgf_ScreenW == 812 && lgf_ScreenH == 375) {
+    class func IsIphoneX() -> Bool {
+        if (ScreenW == 375 && ScreenH == 812) || (ScreenW == 812 && ScreenH == 375) {
             return true// MARK: -  iphoneX/iphoneXS
-        } else if (lgf_ScreenW == 414 && lgf_ScreenH == 896) || (lgf_ScreenW == 896 && lgf_ScreenH == 414) {
+        } else if (ScreenW == 414 && ScreenH == 896) || (ScreenW == 896 && ScreenH == 414) {
             return true// MARK: -  iphoneXR/iphoneXSMax
         } else {
             return false
@@ -29,8 +31,8 @@ public extension UIDevice {
     }
     
     // MARK: -  判断是否是 Iphone4
-    class func lgf_IsIphone4() -> Bool {
-        if (lgf_ScreenW == 640 || lgf_ScreenH == 960) && (lgf_ScreenW == 960 || lgf_ScreenH == 640) {
+    class func IsIphone4() -> Bool {
+        if (ScreenW == 640 || ScreenH == 960) && (ScreenW == 960 || ScreenH == 640) {
             return true// MARK: -  iphone4
         } else {
             return false
@@ -38,87 +40,87 @@ public extension UIDevice {
     }
     
     // MARK: -  NavigationBar 高度
-    class func lgf_RealNavigationBarH() -> CGFloat {
-        return lgf_IsIphoneX() ? 88.0 : 64.0
+    class func RealNavigationBarH() -> CGFloat {
+        return IsIphoneX() ? 88.0 : 64.0
     }
     
     // MARK: -  TabBar 高度
-    class func lgf_RealTabBarH() -> CGFloat {
-        return lgf_IsIphoneX() ? 83.0 : 49.0
+    class func RealTabBarH() -> CGFloat {
+        return IsIphoneX() ? 83.0 : 49.0
     }
     
     // MARK: -  顶部的安全距离
-    class func lgf_TopSafeAreaH() -> CGFloat {
-        return lgf_IsIphoneX() ? 20.0 : 0.0
+    class func TopSafeAreaH() -> CGFloat {
+        return IsIphoneX() ? 20.0 : 0.0
     }
     
     // MARK: -  底部的安全距离
-    class func lgf_BottomSafeAreaH() -> CGFloat {
-        return lgf_IsIphoneX() ? 34.0 : 0.0
+    class func BottomSafeAreaH() -> CGFloat {
+        return IsIphoneX() ? 34.0 : 0.0
     }
     
     // MARK: -  375 自动 Cell 高度
-    class func lgf_Iphone6Height(_ height: CGFloat) -> CGFloat {
-        return (lgf_ScreenW / 375.0) * height
+    class func Iphone6Height(_ height: CGFloat) -> CGFloat {
+        return (ScreenW / 375.0) * height
     }
     
     // MARK: -  电池栏小菊花
-    static let lgf_NWA = UIApplication.shared.isNetworkActivityIndicatorVisible
+    static let NWA = UIApplication.shared.isNetworkActivityIndicatorVisible
     
     // MARK: -  uuidString
-    class func lgf_UUID() -> String? {
+    class func UUID() -> String? {
         return UIDevice.current.identifierForVendor?.uuidString
     }
     
     // MARK: - systemName
-    class func lgf_SystemName() -> String {
+    class func SystemName() -> String {
         return UIDevice.current.systemName
     }
     
     // MARK: - systemVersion
-    class func lgf_SystemVersion() -> String {
+    class func SystemVersion() -> String {
         return UIDevice.current.systemVersion
     }
     
     // MARK: - systemVersion(float)
-    class func lgf_SystemFloatVersion() -> Float {
-        return (lgf_SystemVersion() as NSString).floatValue
+    class func SystemFloatVersion() -> Float {
+        return (SystemVersion() as NSString).floatValue
     }
     
     // MARK: - deviceName
-    class func lgf_DeviceName() -> String {
+    class func DeviceName() -> String {
         return UIDevice.current.name
     }
     
     // MARK: - device语言
-    class func lgf_DeviceLanguage() -> String {
+    class func DeviceLanguage() -> String {
         return Bundle.main.preferredLocalizations[0]
     }
     
     // MARK: - 是否是iphone
-    class func lgf_IsPhone() -> Bool {
+    class func IsPhone() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
     }
     
     // MARK: - 是否是ipad
-    class func lgf_IsPad() -> Bool {
+    class func IsPad() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
     }
     
     // MARK: - 屏幕旋转 是否需要动画
-    static func lgf_SwitchNewOrientation(_ interfaceOrientation: UIInterfaceOrientation, animated: Bool) {
+    static func SwitchNewOrientation(_ interfaceOrientation: UIInterfaceOrientation, animated: Bool) {
         if animated {
-            self.lgf_SwitchNewOrientation(interfaceOrientation)
+            self.SwitchNewOrientation(interfaceOrientation)
         } else {
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-            self.lgf_SwitchNewOrientation(interfaceOrientation)
+            self.SwitchNewOrientation(interfaceOrientation)
             CATransaction.commit()
         }
     }
     
     // MARK: - 屏幕旋转
-    static func lgf_SwitchNewOrientation(_ interfaceOrientation: UIInterfaceOrientation) {
+    static func SwitchNewOrientation(_ interfaceOrientation: UIInterfaceOrientation) {
         let resetOrientationTarget = NSNumber.init(value: Int8(UIInterfaceOrientation.unknown.rawValue))
         UIDevice.current.setValue(resetOrientationTarget, forKey: "orientation")
         let orientationTarget = NSNumber.init(value: Int8(interfaceOrientation.rawValue))
