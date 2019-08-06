@@ -22,6 +22,19 @@ public enum lgf_BigSmallViewType {
 
 public class LGFAutoBigSmallView: UIView {
     
+    // 大屏 view
+    public var lgf_BigView: UIView! {
+        didSet {
+            self.addSubview(lgf_BigView)
+        }
+    }
+    // 小屏 view
+    public var lgf_SmallView: UIView! {
+        didSet {
+            self.addSubview(lgf_SmallView)
+        }
+    }
+    
     // 小屏 frame
     fileprivate var lgf_SmallFrame: CGRect!
     
@@ -54,6 +67,8 @@ public class LGFAutoBigSmallView: UIView {
                 }
                 lgf_FrameFinish?(.big)
                 DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.05 : 0.0)) {
+                    self.lgf_BigView.frame = UIApplication.shared.keyWindow!.bounds
+                    self.lgf_BigView.isHidden = false
                     self.lgf_FrameFinish?(.bigFinish)
                 }
             } else {
@@ -69,7 +84,7 @@ public class LGFAutoBigSmallView: UIView {
     var lgf_FrameFinish: ((_ type: lgf_BigSmallViewType) -> Void)?
     
     // 展示放大缩小 view
-    public func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, bigView: UIView, smallView: UIView, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
+    public func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
         self.lgf_AddPan(target: self, action: #selector(lgf_PanEvent(sender:)))
         self.lgf_AddTap(target: self, action: #selector(lgf_TapEvent(sender:)))
         frame = UIApplication.shared.keyWindow!.bounds
@@ -79,8 +94,6 @@ public class LGFAutoBigSmallView: UIView {
         lgf_IsBigHorizontal = isBigHorizontal
         lgf_FrameFinish = frameFinish
         UIApplication.shared.keyWindow?.addSubview(self)
-        self.addSubview(bigView)
-        self.addSubview(smallView)
         lgf_AutoHide()
         lgf_Present()
     }
@@ -114,6 +127,8 @@ public class LGFAutoBigSmallView: UIView {
             self.frame = self.lgf_SmallFrame
             self.layer.cornerRadius = self.lgf_SmallCornerRadius
         }) { (finish) in
+            self.lgf_SmallView.frame = lgf_AutoBigSmallView.bounds
+            self.lgf_SmallView.isHidden = false
             self.lgf_FrameFinish?(.smallFinish)
         }
     }

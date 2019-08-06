@@ -23,7 +23,7 @@ class TestViewTwo: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = CGRect.init(x: 40, y: 40, width: self.bounds.width - 80, height: self.bounds.height - 80)
+        label.frame = CGRect.init(x: 10, y: 10, width: self.bounds.width - 20, height: self.bounds.height - 20)
     }
     
     func congifUI() -> Void {

@@ -37,6 +37,8 @@ class TestView: UIView {
     }
     
     @objc func click() -> Void {
+        let smallview = TestViewTwo.init(frame: CGRect.init(x: 20, y: 20, width: 100, height: 150))
+        lgf_AutoBigSmallView.lgf_SmallView = smallview
         lgf_AutoBigSmallView.lgf_IsSmall = true
     }
 }

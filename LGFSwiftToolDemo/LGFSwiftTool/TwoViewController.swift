@@ -27,12 +27,12 @@ class TwoViewController: UIViewController {
         //        vc3.view.frame = self.view.bounds
         //        self.view.addSubview(vc3.view)
         //        self.addChild(vc3)
-        lgf_RunTimer(self, S: 0.7) { (timer) in
-//            debugPrint(123123)
+        lgf_RunTimer(self, S: 3.0) { (timer) in
+            debugPrint(123123)
         }
         
         lgf_After(S: 7.0) {
-            lgf_AutoBigSmallView.lgf_Dismiss()
+//            lgf_AutoBigSmallView.lgf_Dismiss()
         }
     }
     
@@ -42,24 +42,17 @@ class TwoViewController: UIViewController {
     
     @IBAction func showHView(_ sender: UIButton) {
         let bigview = TestView.init(frame: UIScreen.main.bounds)
-        bigview.lgf_ViewName = "大的"
-        let smallview = TestViewTwo.init(frame: CGRect.init(x: 20, y: 20, width: 100, height: 150))
-        smallview.lgf_ViewName = "小的"
-        
-        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true, bigView: bigview, smallView: smallview) { (type) in
+        lgf_AutoBigSmallView.lgf_BigView = bigview
+        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true) { (type) in
             if type == .small {
                 debugPrint("准备缩小")
             } else if type == .smallFinish {
-                smallview.frame = lgf_AutoBigSmallView.bounds
-                smallview.isHidden = false
                 debugPrint("缩小完毕")
             } else if type == .smallRemove {
                 debugPrint("缩小删除")
             } else if type == .big {
                 debugPrint("准备变大")
             } else if type == .bigFinish {
-                bigview.frame = lgf_AutoBigSmallView.bounds
-                bigview.isHidden = false
                 debugPrint("变大完毕")
             } else if type == .bigRemove {
                 debugPrint("变大删除")
