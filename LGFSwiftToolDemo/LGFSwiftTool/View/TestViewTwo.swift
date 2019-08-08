@@ -21,11 +21,6 @@ class TestViewTwo: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        label.frame = CGRect.init(x: 10, y: 10, width: self.bounds.width - 20, height: self.bounds.height - 20)
-    }
-    
     func congifUI() -> Void {
         label = UILabel.init(frame: CGRect.zero)
         label.text = "111232534554512325345545123253455451"
@@ -34,6 +29,7 @@ class TestViewTwo: UIView {
         label.numberOfLines = 0
         self.addSubview(label)
         label.lgf_AddTap(target: self, action: #selector(click))
+        label.lgf_FillSuperview()
     }
     
     @objc func click() -> Void {

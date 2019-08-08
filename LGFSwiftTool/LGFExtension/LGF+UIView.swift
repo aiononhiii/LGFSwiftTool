@@ -9,11 +9,11 @@
 #if canImport(UIKit)
 import UIKit
 
-private var lgf_ViewNameKey: String = ""
+private var lgf_ViewNameKey: String = "lgf_ViewNameKey"
 
 public extension UIView {
     
-    // MARK: -  给 view 定义一个字符串名字
+    // MARK: -  给 view 定义一个字符串名字(类似 tag)
     var lgf_ViewName: String? {
         get {
             return (objc_getAssociatedObject(self, &lgf_ViewNameKey) as? String)

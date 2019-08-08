@@ -22,19 +22,6 @@ public enum lgf_BigSmallViewType {
 
 public class LGFAutoBigSmallView: UIView {
     
-    // 大屏 view
-    public var lgf_BigView: UIView! {
-        didSet {
-            self.addSubview(lgf_BigView)
-        }
-    }
-    // 小屏 view
-    public var lgf_SmallView: UIView! {
-        didSet {
-            self.addSubview(lgf_SmallView)
-        }
-    }
-    
     // 小屏 frame
     fileprivate var lgf_SmallFrame: CGRect!
     
@@ -61,14 +48,12 @@ public class LGFAutoBigSmallView: UIView {
     var lgf_IsHorizontal: Bool! {
         didSet {
             if lgf_IsHorizontal {
+                lgf_FrameFinish?(.big)
                 if lgf_IsBigHorizontal {
                     UIDevice.lgf_SwitchNewOrientation(.landscapeRight, animated: false)
                     self.frame = UIApplication.shared.keyWindow!.bounds
                 }
-                lgf_FrameFinish?(.big)
                 DispatchQueue.main.asyncAfter(deadline: .now() + (self.lgf_IsBigHorizontal ? 0.05 : 0.0)) {
-                    self.lgf_BigView.frame = UIApplication.shared.keyWindow!.bounds
-                    self.lgf_BigView.isHidden = false
                     self.lgf_FrameFinish?(.bigFinish)
                 }
             } else {
@@ -87,20 +72,22 @@ public class LGFAutoBigSmallView: UIView {
     public func lgf_Show(smallF: CGRect, smaleCR: CGFloat, isBigHorizontal: Bool, _ frameFinish: @escaping (_ type: lgf_BigSmallViewType) -> Void) -> Void {
         self.lgf_AddPan(target: self, action: #selector(lgf_PanEvent(sender:)))
         self.lgf_AddTap(target: self, action: #selector(lgf_TapEvent(sender:)))
-        frame = UIApplication.shared.keyWindow!.bounds
+        frame = UIScreen.main.bounds
         backgroundColor = UIColor.black
+        clipsToBounds = true
         lgf_SmallCornerRadius = smaleCR
         lgf_SmallFrame = smallF
         lgf_IsBigHorizontal = isBigHorizontal
         lgf_FrameFinish = frameFinish
-        UIApplication.shared.keyWindow?.addSubview(self)
-        lgf_AutoHide()
+        UIApplication.shared.lgf_TopViewController?.view.addSubview(self)
+        self.lgf_FillSuperview()
+        lgf_SubviewsRemove()
         lgf_Present()
     }
     
     public func lgf_Present() -> Void {
-        transform = CGAffineTransform.init(translationX: UIApplication.shared.keyWindow!.bounds.width, y: 0.0)
-        UIView.animate(withDuration: 0.3, animations: {
+        self.transform = CGAffineTransform.init(translationX: UIApplication.shared.keyWindow!.bounds.width, y: 0.0)
+        UIView.animate(withDuration: 0.35, animations: {
             self.transform = CGAffineTransform.identity
         }) { (finish) in
             self.lgf_IsHorizontal = true
@@ -112,31 +99,31 @@ public class LGFAutoBigSmallView: UIView {
             lgf_FrameFinish?(.smallRemove)
             lgf_Remove()
         } else {
-            self.lgf_IsHorizontal = false
             self.lgf_FrameFinish?(.bigRemove)
+            self.lgf_IsHorizontal = false
             self.lgf_Remove()
         }
     }
     
     // 变小
     fileprivate func lgf_ToSmall() -> Void {
-        self.lgf_IsHorizontal = false
+        self.lgf_SubviewsRemove()
         lgf_FrameFinish?(.small)
-        lgf_AutoHide()
-        UIView.animate(withDuration: 0.3, animations: {
+        self.lgf_ShowTabBar()
+        self.lgf_IsHorizontal = false
+        UIView.animate(withDuration: 0.35, animations: {
             self.frame = self.lgf_SmallFrame
             self.layer.cornerRadius = self.lgf_SmallCornerRadius
         }) { (finish) in
-            self.lgf_SmallView.frame = lgf_AutoBigSmallView.bounds
-            self.lgf_SmallView.isHidden = false
             self.lgf_FrameFinish?(.smallFinish)
         }
     }
     
     // 变大
     fileprivate func lgf_ToBig() -> Void {
-        lgf_AutoHide()
-        UIView.animate(withDuration: 0.3, animations: {
+        self.lgf_SubviewsRemove()
+        self.lgf_HideTabBar()
+        UIView.animate(withDuration: 0.35, animations: {
             self.frame = UIApplication.shared.keyWindow!.bounds
             self.layer.cornerRadius = 0.0
         }) { (finish) in
@@ -155,7 +142,7 @@ public class LGFAutoBigSmallView: UIView {
                 let screenW = UIScreen.main.bounds.size.width
                 let screenH = UIScreen.main.bounds.size.height
                 let sp: CGFloat = 5.0
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.35, animations: {
                     if self.center.x <= screenW / 2.0 {
                         if self.center.y <= screenH / 2.0 {
                             if self.lgf_Y <= self.lgf_X {
@@ -215,19 +202,31 @@ public class LGFAutoBigSmallView: UIView {
         }
     }
     
-    func lgf_AutoHide() {
-        self.subviews.forEach {
-            $0.isHidden = true
-        }
+    public func lgf_SubviewsRemove() -> Void {
+        self.subviews.forEach { $0.removeFromSuperview() }
     }
     
     func lgf_Remove() -> Void {
         if self.superview != nil {
-            self.subviews.forEach { $0.removeFromSuperview() }
+            self.lgf_SubviewsRemove()
             self.removeFromSuperview()
+            self.lgf_ShowTabBar()
         }
     }
     
+    func lgf_ShowTabBar() -> Void {
+        let vc = UIViewController.lgf_GetTopVC()
+        if !vc!.hidesBottomBarWhenPushed {
+            (UIApplication.shared.lgf_TopViewController! as? UITabBarController)?.tabBar.isHidden = false
+        }
+    }
+    
+    func lgf_HideTabBar() -> Void {
+        let vc = UIViewController.lgf_GetTopVC()
+        if !vc!.hidesBottomBarWhenPushed {
+            (UIApplication.shared.lgf_TopViewController! as? UITabBarController)?.tabBar.isHidden = true
+        }
+    }
 }
 
 #endif // canImport(UIKit)

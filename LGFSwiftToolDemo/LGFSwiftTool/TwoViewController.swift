@@ -41,18 +41,22 @@ class TwoViewController: UIViewController {
     }
     
     @IBAction func showHView(_ sender: UIButton) {
-        let bigview = TestView.init(frame: UIScreen.main.bounds)
-        lgf_AutoBigSmallView.lgf_BigView = bigview
         lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true) { (type) in
             if type == .small {
                 debugPrint("准备缩小")
             } else if type == .smallFinish {
+                let smallview = TestViewTwo.init()
+                lgf_AutoBigSmallView.addSubview(smallview)
+                smallview.lgf_FillSuperview()
                 debugPrint("缩小完毕")
             } else if type == .smallRemove {
                 debugPrint("缩小删除")
             } else if type == .big {
                 debugPrint("准备变大")
             } else if type == .bigFinish {
+                let bigview = TestView.init()
+                lgf_AutoBigSmallView.addSubview(bigview)
+                bigview.lgf_FillSuperview()
                 debugPrint("变大完毕")
             } else if type == .bigRemove {
                 debugPrint("变大删除")
