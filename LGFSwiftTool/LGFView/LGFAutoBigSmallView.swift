@@ -42,7 +42,7 @@ public class LGFAutoBigSmallView: UIView {
     }
     
     // 放大后是否横屏
-    var lgf_IsBigHorizontal: Bool!
+    public var lgf_IsBigHorizontal: Bool!
     
     // 是否横屏
     var lgf_IsHorizontal: Bool! {
@@ -95,13 +95,15 @@ public class LGFAutoBigSmallView: UIView {
     }
     
     public func lgf_Dismiss() -> Void {
-        if self.frame == self.lgf_SmallFrame {
-            lgf_FrameFinish?(.smallRemove)
-            lgf_Remove()
-        } else {
-            self.lgf_FrameFinish?(.bigRemove)
-            self.lgf_IsHorizontal = false
-            self.lgf_Remove()
+        if lgf_IsBigHorizontal != nil {
+            if self.frame == self.lgf_SmallFrame {
+                lgf_FrameFinish?(.smallRemove)
+                lgf_Remove()
+            } else {
+                self.lgf_FrameFinish?(.bigRemove)
+                self.lgf_IsHorizontal = false
+                self.lgf_Remove()
+            }
         }
     }
     
