@@ -29,7 +29,7 @@
 		18592E9322EEE03F0026D84E /* LGFShowClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8D22EEE03F0026D84E /* LGFShowClassName.swift */; };
 		18592E9422EEE03F0026D84E /* LGFSwiftMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E8E22EEE03F0026D84E /* LGFSwiftMethod.swift */; };
 		18592E9622EEE0C40026D84E /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18592E9522EEE0C40026D84E /* TwoViewController.swift */; };
-		185EA68C230BBA20001A98A7 /* LGF+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EA68B230BBA1F001A98A7 /* LGF+CGFloat.swift */; };
+		185EA68C230BBA20001A98A7 /* LGF+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EA68B230BBA1F001A98A7 /* LGF+Double.swift */; };
 		18862E5922F7D4C200629984 /* LGF+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18862E5822F7D4C200629984 /* LGF+UIScrollView.swift */; };
 		18D2AE1122F8231F001EC556 /* TestViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2AE1022F8231F001EC556 /* TestViewTwo.swift */; };
 		18E6B8E22303AA6A006F63BF /* ModelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E6B8E12303AA69006F63BF /* ModelModel.swift */; };
@@ -72,7 +72,7 @@
 		18592E8D22EEE03F0026D84E /* LGFShowClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGFShowClassName.swift; sourceTree = "<group>"; };
 		18592E8E22EEE03F0026D84E /* LGFSwiftMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGFSwiftMethod.swift; sourceTree = "<group>"; };
 		18592E9522EEE0C40026D84E /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
-		185EA68B230BBA1F001A98A7 /* LGF+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+CGFloat.swift"; sourceTree = "<group>"; };
+		185EA68B230BBA1F001A98A7 /* LGF+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+Double.swift"; sourceTree = "<group>"; };
 		18862E5822F7D4C200629984 /* LGF+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UIScrollView.swift"; sourceTree = "<group>"; };
 		18D2AE1022F8231F001EC556 /* TestViewTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewTwo.swift; sourceTree = "<group>"; };
 		18E6B8E12303AA69006F63BF /* ModelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelModel.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				18309F2422F4138E002CCDE9 /* LGF+Timer.swift */,
 				18309F2622F4344A002CCDE9 /* LGF+UISlider.swift */,
 				18862E5822F7D4C200629984 /* LGF+UIScrollView.swift */,
-				185EA68B230BBA1F001A98A7 /* LGF+CGFloat.swift */,
+				185EA68B230BBA1F001A98A7 /* LGF+Double.swift */,
 			);
 			path = LGFExtension;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				18309F1F22F400C7002CCDE9 /* LGF+Storyboard.swift in Sources */,
 				18862E5922F7D4C200629984 /* LGF+UIScrollView.swift in Sources */,
 				18592E9622EEE0C40026D84E /* TwoViewController.swift in Sources */,
-				185EA68C230BBA20001A98A7 /* LGF+CGFloat.swift in Sources */,
+				185EA68C230BBA20001A98A7 /* LGF+Double.swift in Sources */,
 				18592E9022EEE03F0026D84E /* LGF+String.swift in Sources */,
 				18309F2122F407AF002CCDE9 /* LGF+Xib.swift in Sources */,
 				18F5528C22F2C8EF006DA8E8 /* LGFAutoBigSmallView.swift in Sources */,
