@@ -31,6 +31,17 @@ public extension UIScrollView {
         scv.alwaysBounceHorizontal = false
         return scv
     }
+    
+    // MARK: - scrollview table 自动 contentSize
+    func lgf_AutoContentSize() -> Void {
+        self.layoutIfNeeded()
+        var contentSizeHeight: CGFloat = 0.0
+        self.subviews.forEach { (view) in
+            contentSizeHeight += view.lgf_Height
+            debugPrint(view.lgf_Height)
+        }
+        self.contentSize = CGSize.init(width: self.lgf_Width, height: contentSizeHeight)
+    }
 }
 
 #endif // canImport(UIKit)

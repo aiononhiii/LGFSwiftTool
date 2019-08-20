@@ -8,6 +8,8 @@
 
 #if canImport(Foundation)
 import Foundation
+#if canImport(UIKit)
+import UIKit
 
 public enum lgf_UnitStrType {
     case lgf_SmallPinyin// 小写拼音 (q w y)
@@ -180,6 +182,31 @@ public extension String {
         let base64String = plainData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         return base64String
     }
+    
+    // MARK: - 获取字符串宽度
+    func lgf_Width(_ font: UIFont, _ height: CGFloat) -> CGFloat {
+        return self.lgf_TextSizeWithFont(font: font, constrainedToSize:CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: height)).width + 1.0
+    }
+    
+    // MARK: - 获取字符串高度
+    func lgf_Height(_ font: UIFont, _ width: CGFloat) -> CGFloat {
+        return self.lgf_TextSizeWithFont(font: font, constrainedToSize:CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude)).height + 1.0
+    }
+    
+    // MARK: - 获取字符串 size
+    func lgf_TextSizeWithFont(font: UIFont, constrainedToSize size:CGSize) -> CGSize {
+        var textSize:CGSize!
+        if size.equalTo(CGSize.zero) {
+            let attributes = NSDictionary(object: font, forKey: NSAttributedString.Key.font as NSCopying)
+            textSize = self.size(withAttributes: attributes as? [NSAttributedString.Key : Any])
+        } else {
+            let option = NSStringDrawingOptions.usesLineFragmentOrigin
+            let attributes = NSDictionary(object: font, forKey: NSAttributedString.Key.font as NSCopying)
+            let stringRect = self.boundingRect(with: size, options: option, attributes: attributes as? [NSAttributedString.Key : Any], context: nil)
+            textSize = stringRect.size
+        }
+        return textSize
+    }
 }
 
 // MARK: - 国际化/本地化
@@ -253,4 +280,6 @@ public extension String {
         return string as String
     }
 }
+
+#endif // canImport(UIKit)
 #endif // canImport(Foundation)
