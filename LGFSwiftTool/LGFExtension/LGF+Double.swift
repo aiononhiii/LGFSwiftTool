@@ -12,12 +12,12 @@ import UIKit
 public extension Double {
     
     // MARK: - 获取相对于屏幕宽度
-    func lgf_ScreenW() -> CGFloat {
+    func lgf_W() -> CGFloat {
         return CGFloat(self) * UIDevice.lgf_ScreenW / 375.0
     }
     
     // MARK: - 获取相对于屏幕高度
-    func lgf_ScreenH() -> CGFloat {
+    func lgf_H() -> CGFloat {
         return CGFloat(self) * UIDevice.lgf_ScreenH / 667.0
     }
     
