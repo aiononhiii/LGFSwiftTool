@@ -11,6 +11,16 @@ import UIKit
 
 public extension Int {
     
+    // MARK: - 获取相对于屏幕宽度
+    func lgf_W() -> CGFloat {
+        return CGFloat(self * Int(UIDevice.lgf_ScreenW / 375))
+    }
+    
+    // MARK: - 获取相对于屏幕高度
+    func lgf_H() -> CGFloat {
+        return CGFloat(self * Int(UIDevice.lgf_ScreenH / 667))
+    }
+    
 }
 
 #endif // canImport(UIKit)

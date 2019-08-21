@@ -12,9 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let ff = lgf_W(10)
         
-        debugPrint(ff)
+        
     }
 }
 
