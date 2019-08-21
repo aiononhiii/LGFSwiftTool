@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let ff = 11.0.lgf_W() + 10
+        let ff = Double.lgf_W(fff: 11.0) + 10
         
         debugPrint(ff)
     }
