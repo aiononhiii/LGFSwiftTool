@@ -18,7 +18,7 @@ import UIKit
 ///   - collectionView: 传入要作用的 collectionView
 ///   - fixedHorizontal: 固定横向边界
 ///   - fixedVertical: 固定竖向边界
-func lgf_SortCellWithGesture(sender: UILongPressGestureRecognizer, collectionView: UICollectionView, fixedHorizontal: Bool, fixedVertical: Bool) -> Void {
+public func lgf_SortCellWithGesture(sender: UILongPressGestureRecognizer, collectionView: UICollectionView, fixedHorizontal: Bool, fixedVertical: Bool) -> Void {
     let point = sender.location(in: collectionView)
     var lgf_MoveCell: UICollectionViewCell!
     let indexPath: IndexPath!
@@ -59,7 +59,7 @@ func lgf_SortCellWithGesture(sender: UILongPressGestureRecognizer, collectionVie
 ///
 /// - Parameter phoneNumber: 传入的手机号字符串
 @available(iOS 10.0, *)
-func lgf_CallPhoneWithPhoneNumber(phoneNumber: String) -> Void {
+public func lgf_CallPhoneWithPhoneNumber(phoneNumber: String) -> Void {
     let number = "tel:" + phoneNumber
     let numberURL = URL.init(string: number)
     if numberURL != nil {
@@ -73,6 +73,16 @@ func lgf_CallPhoneWithPhoneNumber(phoneNumber: String) -> Void {
     } else {
         debugPrint("电话拨打失败")
     }
+}
+
+// MARK: - 获取相对于屏幕宽度
+public func lgf_W(_ w: CGFloat) -> CGFloat {
+    return CGFloat(w * UIDevice.lgf_ScreenW / 375.0)
+}
+
+// MARK: - 获取相对于屏幕高度
+public func lgf_H(_ h: CGFloat) -> CGFloat {
+    return CGFloat(h * UIDevice.lgf_ScreenH / 667.0)
 }
 
 func lgf_DecimalPointInputSpecificationWithTextField(textField: UITextField, string: String, range: NSRange) -> Bool {

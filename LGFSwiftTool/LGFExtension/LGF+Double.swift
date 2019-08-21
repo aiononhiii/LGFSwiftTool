@@ -11,35 +11,7 @@ import UIKit
 
 public extension Double {
     
-    // MARK: - 获取相对于屏幕宽度
-    func lgf_W() -> CGFloat {
-        return CGFloat(self * Double(UIDevice.lgf_ScreenW / 375.0))
-    }
     
-    // MARK: - 获取相对于屏幕高度
-    func lgf_H() -> CGFloat {
-        return CGFloat(self * Double(UIDevice.lgf_ScreenH / 667.0))
-    }
-    
-    // MARK: - 获取相对于屏幕宽度
-    func lgf_W() -> Double {
-        return self * Double(UIDevice.lgf_ScreenW / 375.0)
-    }
-    
-    // MARK: - 获取相对于屏幕高度
-    func lgf_H() -> Double {
-        return self * Double(UIDevice.lgf_ScreenH / 667.0)
-    }
-    
-    // MARK: - 获取相对于屏幕宽度
-    func lgf_W() -> Int {
-        return Int(self * Double(UIDevice.lgf_ScreenW / 375.0))
-    }
-    
-    // MARK: - 获取相对于屏幕高度
-    func lgf_H() -> Int {
-        return Int(self * Double(UIDevice.lgf_ScreenH / 667.0))
-    }
     
 }
 
