@@ -33,14 +33,14 @@ public extension UIScrollView {
     }
     
     // MARK: - scrollview table 自动 contentSize
-    func lgf_AutoContentSize() -> Void {
-        self.layoutIfNeeded()
-        var contentSizeHeight: CGFloat = 0.0
-        self.subviews.forEach { (view) in
-            contentSizeHeight += view.lgf_Height
-            debugPrint(view.lgf_Height)
+    func lgf_AutoContentSize(_ bottom: CGFloat) -> Void {
+        if self.subviews.count > 0 {
+            self.layoutIfNeeded()
+            DispatchQueue.main.async {
+                let contentSizeHeight: CGFloat = self.subviews.last!.lgf_Y + self.subviews.last!.lgf_Height + bottom
+                self.contentSize = CGSize.init(width: self.lgf_Width, height: contentSizeHeight)
+            }
         }
-        self.contentSize = CGSize.init(width: self.lgf_Width, height: contentSizeHeight)
     }
 }
 

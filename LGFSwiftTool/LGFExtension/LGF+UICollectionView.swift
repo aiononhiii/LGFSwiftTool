@@ -45,7 +45,9 @@ public extension UICollectionView {
     /// 使用： let cell = collectionView.lgf_DequeueReusableCell(with: LaiGuoFengCell.self, for: indexPath)
     func lgf_DequeueReusableCell<T: UICollectionViewCell>(with type: T.Type,
                                                           for indexPath: IndexPath) -> T {
-        return dequeueReusableCell(withReuseIdentifier: String(describing: type.classForCoder()), for: indexPath) as! T
+        let cell = dequeueReusableCell(withReuseIdentifier: String(describing: type.classForCoder()), for: indexPath) as! T
+        cell.tag = indexPath.item
+        return cell
     }
     
     // MARK: - 快捷注册 ReusableView

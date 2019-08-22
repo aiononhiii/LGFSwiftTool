@@ -45,7 +45,9 @@ public extension UITableView {
     // MARK: - 初始化自定义 cell 的时候就不用加上 as! LaiGuoFengCell 这句话了
     /// 使用： let cell = tableView.lgf_DequeueReusableCell(with: LaiGuoFengCell.self, for: indexPath)
     func lgf_DequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
-        return self.dequeueReusableCell(withIdentifier: String(describing: type.classForCoder()), for: indexPath) as! T
+        let cell = dequeueReusableCell(withIdentifier: String(describing: type.classForCoder()), for: indexPath) as! T
+        cell.tag = indexPath.item
+        return cell
     }
 }
 #endif // canImport(UIKit)
