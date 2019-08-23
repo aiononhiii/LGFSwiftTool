@@ -75,7 +75,9 @@ public extension UICollectionView {
     func lgf_DequeueReusableView<T: UICollectionReusableView>(with type: T.Type,
                                                               for indexPath: IndexPath,
                                                               ofKind kind: String = UICollectionView.elementKindSectionHeader) -> T {
-        return dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: type.classForCoder()), for: indexPath) as! T
+        let reusableView = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: type.classForCoder()), for: indexPath) as! T
+        reusableView.tag = indexPath.section
+        return reusableView
     }
 }
 #endif // canImport(UIKit)
