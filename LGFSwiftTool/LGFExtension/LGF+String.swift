@@ -35,7 +35,7 @@ public enum lgf_TimeFormatType {
 public extension String {
     
     // MARK: - 根据数字返回带单位字符串
-    internal static func lgf_GetNumStrWithNum(num: Int, unitType: lgf_UnitType, unitStrType: lgf_UnitStrType) -> String {
+    static func lgf_GetNumStrWithNum(num: Int, unitType: lgf_UnitType, unitStrType: lgf_UnitStrType) -> String {
         var str: String = ""
         if unitType == lgf_UnitType.lgf_OnlyQian {
             if num < 1000 {
@@ -102,7 +102,7 @@ public extension String {
     }
     
     // MARK: - 获取当前时间的 时间戳字符串
-    internal static func lgf_GetNowTimeStampStr() -> String {
+    static func lgf_GetNowTimeStampStr() -> String {
         let timeSp: TimeInterval = NSDate.init().timeIntervalSince1970 * 1000
         return String(Int(timeSp))
     }
@@ -113,11 +113,11 @@ public extension String {
     ///   - timeStamp: 要转换的时间戳
     ///   - format: 格式化类型
     /// - Returns: 时间字符串
-    internal static func lgf_TimeStampSwitchTimeStr(timeStamp: String, format: String) -> String {
+    static func lgf_TimeStampSwitchTimeStr(timeStamp: String, format: String) -> String {
         if timeStamp.count == 0 {
             return ""
         }
-        let formatStr = String.lgf_IsNull(obj: format) ? "YYYY-MM-dd HH:mm:ss" : format
+        let formatStr = format.lgf_IsNull() ? "YYYY-MM-dd HH:mm:ss" : format
         let formatter = DateFormatter.init()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
@@ -135,8 +135,8 @@ public extension String {
     }
     
     // MARK: - 是否为空
-    internal static func lgf_IsNull(obj: String) -> Bool {
-        let str: String = obj.trimmingCharacters(in: .whitespaces)
+    func lgf_IsNull() -> Bool {
+        let str: String = self.trimmingCharacters(in: .whitespaces)
         if str.count == 0 {
             return true
         } else {

@@ -129,6 +129,14 @@ public extension UIView {
         self.addGestureRecognizer(tap)
     }
     
+    // MARK: - 添加多击手势
+    func lgf_AddDoubleTap(target: Any?, tapNum: Int, action: Selector?) -> Void {
+        self.isUserInteractionEnabled = true
+        let doubletap = UITapGestureRecognizer.init(target: self, action: action)
+        doubletap.numberOfTapsRequired = tapNum
+        self.addGestureRecognizer(doubletap)
+    }
+    
     // MARK: - 添加长按手势
     func lgf_AddLong(target: Any?, action: Selector?, duration: TimeInterval) -> Void {
         self.isUserInteractionEnabled = true
@@ -221,7 +229,7 @@ public extension UIView {
             rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
         }
     }
- 
+    
     func lgf_GradualBackgroundWithDirection(_ direction: Int, startColor: UIColor, endColor: UIColor, frame: CGRect) {
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [startColor.cgColor,endColor.cgColor];
@@ -235,6 +243,17 @@ public extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func lgf_SubViewTotalHeight(_ outView: UIView, _ outHeight: CGFloat) -> CGFloat {
+        var totalH: CGFloat = 0.0
+        self.subviews.forEach { (view) in
+            if view != outView {
+                totalH += view.lgf_Height
+            } else {
+                totalH += outHeight
+            }
+        }
+        return totalH
+    }
 }
 
 #endif // canImport(UIKit)

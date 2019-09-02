@@ -37,3 +37,17 @@ public extension NSObjectProtocol {
             .joined(separator: "\n")
     }
 }
+
+private var lgf_NameKey: String = "lgf_NameKey"
+
+public extension NSObject {
+    // MARK: - 给 object 定义一个字符串名字(类似 view 的 tag)
+    var lgf_Name: String? {
+        get {
+            return (objc_getAssociatedObject(self, &lgf_NameKey) as? String)
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &lgf_NameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
+        }
+    }
+}

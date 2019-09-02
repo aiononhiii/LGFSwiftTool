@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name        = "LGFSwiftTool"
-s.version     = "0.3.4"
+s.version     = "0.3.5"
 s.summary     = "LGFSwiftTool"
 s.homepage    = "https://github.com/aiononhiii/LGFSwiftTool.git"
 s.license     = { :type => 'MIT', :file => 'LICENSE' }
