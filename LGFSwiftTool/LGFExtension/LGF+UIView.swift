@@ -243,16 +243,25 @@ public extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func lgf_SubViewTotalHeight(_ outView: UIView, _ outHeight: CGFloat) -> CGFloat {
+    // MARK: - 适配用的高度计算
+    func lgf_SubViewTotalHeight(_ views: [UIView], _ heights: [CGFloat]) -> CGFloat {
+        if views.count != heights.count {
+            return 0.0
+        }
         var totalH: CGFloat = 0.0
         self.subviews.forEach { (view) in
-            if view != outView {
-                totalH += view.lgf_Height
+            if views.contains(view) {
+                totalH += heights[views.lgf_IndexOfObject(view)]
             } else {
-                totalH += outHeight
+                totalH += view.lgf_Height
             }
         }
         return totalH
+    }
+    
+    // MARK: - 子控件 UserInteractionEnabled 控制
+    func lgf_SubViewEnabled(_ isUserInteractionEnabled: Bool) -> Void {
+        self.subviews.forEach { $0.isUserInteractionEnabled = isUserInteractionEnabled }
     }
 }
 

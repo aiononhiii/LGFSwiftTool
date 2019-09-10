@@ -8,6 +8,21 @@
 
 import Foundation
 
+public extension Array {
+    
+    // MARK: - 数组转 json
+    func lgf_ToJSON() -> String {
+        if (!JSONSerialization.isValidJSONObject(self)) {
+            print("无法解析出JSONString")
+            return ""
+        }
+        let data : NSData! = try? JSONSerialization.data(withJSONObject: self, options: []) as NSData
+        let JSONString = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)
+        return JSONString! as String
+    }
+    
+}
+
 public extension Array where Element: Equatable {
     
     // MARK: - 便捷删除某个对象
@@ -22,6 +37,11 @@ public extension Array where Element: Equatable {
     @discardableResult
     mutating func lgf_Remove(_ elements: [Element]) -> [Index] {
         return elements.compactMap { lgf_Remove($0) }
+    }
+    
+    // MARK: - 获取某个对象下标
+    func lgf_IndexOfObject(_ element: Element) -> Int {
+        return self.firstIndex(where: { $0 == element }) ?? 0
     }
 }
 
