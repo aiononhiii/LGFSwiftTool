@@ -12,11 +12,11 @@ import UIKit
 public extension UICollectionViewFlowLayout {
     
     // MARK: - 0 UICollectionViewFlowLayout
-    class func lgf_ZeroSpacLayout() -> UICollectionViewFlowLayout {
+    class func lgf_ZeroSpacLayout(_ direction: UICollectionView.ScrollDirection) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout.init()
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = direction
         layout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         return layout
     }
