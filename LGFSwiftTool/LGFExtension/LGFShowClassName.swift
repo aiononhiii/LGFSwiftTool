@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIViewController {
 
-    static func lgf_ShowClassName(_ isShow: Bool) {
+    class func lgf_ShowClassName(_ isShow: Bool) {
         #if DEBUG
         if isShow {
             let vda = #selector(UIViewController.viewDidAppear(_:))
@@ -23,7 +23,7 @@ public extension UIViewController {
         #endif
     }
 
-    static func lgf_MethodReplace(m: Selector, rm: Selector, mm: Method, rmm: Method) -> Void {
+    class func lgf_MethodReplace(m: Selector, rm: Selector, mm: Method, rmm: Method) -> Void {
         #if DEBUG
         let didAddMethod: Bool = class_addMethod(self, m, method_getImplementation(rmm), method_getTypeEncoding(rmm))
         if didAddMethod {

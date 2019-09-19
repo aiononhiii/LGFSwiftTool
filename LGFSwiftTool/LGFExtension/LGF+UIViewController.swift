@@ -46,7 +46,7 @@ public extension UIViewController {
     
     // MARK: - 查找顶层控制器、
     // 获取顶层控制器 根据window
-    static func lgf_GetTopVC() -> (UIViewController?) {
+    class func lgf_GetTopVC() -> (UIViewController?) {
         var window = UIApplication.shared.keyWindow
         //是否为当前显示的window
         if window?.windowLevel != .normal {
@@ -62,7 +62,7 @@ public extension UIViewController {
         return lgf_GetTopVC(withCurrentVC: vc)
     }
     ///根据控制器获取 顶层控制器
-    static func lgf_GetTopVC(withCurrentVC VC :UIViewController?) -> UIViewController? {
+    class func lgf_GetTopVC(withCurrentVC VC :UIViewController?) -> UIViewController? {
         if VC == nil {
             print("🌶： 找不到顶层控制器")
             return nil

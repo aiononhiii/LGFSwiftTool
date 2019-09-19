@@ -125,6 +125,63 @@ public extension UIDevice {
         UIDevice.current.setValue(orientationTarget, forKey: "orientation")
     }
     
+    // MARK: - 清理缓存
+    static func lgf_ClearCache() {
+        // 取出cache文件夹目录 缓存文件都在这个目录下
+        let cachePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
+        if cachePath == nil {
+            return
+        }
+        // 取出文件夹下所有文件数组
+        let fileArr = FileManager.default.subpaths(atPath: cachePath!)
+        if fileArr == nil {
+            return
+        }
+        // 遍历删除
+        for file in fileArr! {
+            let path = cachePath! + "/\(file)"
+            if FileManager.default.fileExists(atPath: path) {
+                do {
+                    try FileManager.default.removeItem(atPath: path)
+                } catch {}
+            }
+        }
+    }
+    
+    // MARK: - 获取缓存大小
+    static func lgf_QueryCacheSize() -> String {
+        let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first
+        if cachePath == nil {
+            return "0.0M"
+        }
+        let fileArr = FileManager.default.subpaths(atPath: cachePath!)
+        if fileArr == nil {
+            return "0.0M"
+        }
+        var size:CGFloat = 0.0
+        for file in fileArr! {
+            
+            // 把文件名拼接到路径中
+            let path = cachePath! + "/\(file)"
+            // 取出文件属性
+            if FileManager.default.fileExists(atPath: path) {
+                do {
+                    let floder = try FileManager.default.attributesOfItem(atPath: path)
+                    // 用元组取出文件大小属性
+                    for (abc, bcd) in floder {
+                        // 累加文件大小
+                        if abc == FileAttributeKey.size {
+                            size += CGFloat(truncating: (bcd as AnyObject) as! NSNumber)
+                        }
+                    }
+                } catch {
+                    debugPrint("文件路径为空!")
+                }
+            }
+        }
+        let cacheSize = size / 1024.0 / 1024.0
+        return String.init(format: "%.1fM", cacheSize)
+    }
 }
 
 #endif // canImport(UIKit)
