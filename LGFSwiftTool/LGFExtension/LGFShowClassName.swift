@@ -22,7 +22,7 @@ public extension UIViewController {
         }
         #endif
     }
-
+    
     class func lgf_MethodReplace(m: Selector, rm: Selector, mm: Method, rmm: Method) -> Void {
         #if DEBUG
         let didAddMethod: Bool = class_addMethod(self, m, method_getImplementation(rmm), method_getTypeEncoding(rmm))

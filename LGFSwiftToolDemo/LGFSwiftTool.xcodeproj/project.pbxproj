@@ -49,6 +49,7 @@
 		18F5529722F3C8ED006DA8E8 /* LGF+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5529622F3C8ED006DA8E8 /* LGF+UIImage.swift */; };
 		18F5529922F3CD12006DA8E8 /* LGF+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5529822F3CD11006DA8E8 /* LGF+NSObject.swift */; };
 		18F5529B22F3CEB6006DA8E8 /* LGF+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5529A22F3CEB6006DA8E8 /* LGF+Array.swift */; };
+		2BB0ED12233361C60099E6CB /* LGF+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		18F5529622F3C8ED006DA8E8 /* LGF+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UIImage.swift"; sourceTree = "<group>"; };
 		18F5529822F3CD11006DA8E8 /* LGF+NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+NSObject.swift"; sourceTree = "<group>"; };
 		18F5529A22F3CEB6006DA8E8 /* LGF+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+Array.swift"; sourceTree = "<group>"; };
+		2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UIButton.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				18B182B4230CFBB90072C3A8 /* LGF+CGFloat.swift */,
 				18C27142230E8887008C297B /* LGF+UICollectionViewFlowLayout.swift */,
 				186F7DA923276B5C00BB8F94 /* LGF+Date.swift */,
+				2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */,
 			);
 			path = LGFExtension;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				18309F1722F3F35B002CCDE9 /* LGFSafe.swift in Sources */,
 				18592E9222EEE03F0026D84E /* LGF+UIView.swift in Sources */,
 				18F5527522F02EC4006DA8E8 /* ChildViewController.swift in Sources */,
+				2BB0ED12233361C60099E6CB /* LGF+UIButton.swift in Sources */,
 				18B18287230CC69F0072C3A8 /* LGF+Int.swift in Sources */,
 				18592E9122EEE03F0026D84E /* LGF+UIColor.swift in Sources */,
 				18309F1F22F400C7002CCDE9 /* LGF+Storyboard.swift in Sources */,
