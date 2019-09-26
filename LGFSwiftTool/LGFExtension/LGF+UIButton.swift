@@ -10,51 +10,54 @@
 #if canImport(UIKit)
 import UIKit
 
-public class LayoutButton: UIButton {
+public enum lgf_ImageEdgeInsetsType {
+    case top, left, right, bottom
+}
+
+public extension UIButton {
     
-    enum lgf_Position {
-        case top
-        case bottom
-        case left
-        case right
-    }
-    
-    private var position: lgf_Position?
-    private var space: CGFloat = 0
-    
-    convenience init(_ position: lgf_Position, at space: CGFloat = 0) {
-        self.init(type: .custom)
-        self.position = position
-        self.space = space
-    }
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        if let position = position {
-            switch position {
-            case .top:
-                let titleHeight = titleLabel?.bounds.height ?? 0
-                let imageHeight = imageView?.bounds.height ?? 0
-                let imageWidth = imageView?.bounds.width ?? 0
-                let titleWidth = titleLabel?.bounds.width ?? 0
-                titleEdgeInsets = UIEdgeInsets.init(top: (titleHeight + space) * 0.5, left: -imageWidth * 0.5, bottom: -space, right: imageWidth * 0.5)
-                imageEdgeInsets = UIEdgeInsets.init(top: 0, left: titleWidth * 0.5, bottom: (imageHeight + space), right: -titleWidth * 0.5)
-            case .bottom:
-                let titleHeight = titleLabel?.bounds.height ?? 0
-                let imageHeight = imageView?.bounds.height ?? 0
-                let imageWidth = imageView?.bounds.width ?? 0
-                let titleWidth = titleLabel?.bounds.width ?? 0
-                titleEdgeInsets = UIEdgeInsets.init(top: -(titleHeight + space) * 0.5, left: -imageWidth * 0.5, bottom: space, right: imageWidth * 0.5)
-                imageEdgeInsets = UIEdgeInsets.init(top: (imageHeight + space), left: titleWidth * 0.5, bottom: 0, right: -titleWidth * 0.5)
+    // MARK: - 按钮图片上下左右
+    func lgf_ImagePosition(at type: lgf_ImageEdgeInsetsType, space: CGFloat) {
+        DispatchQueue.main.async {
+            guard let imageV = self.imageView else { return }
+            guard let titleL = self.titleLabel else { return }
+            //获取图像的宽和高
+            let imageWidth = imageV.frame.size.width
+            let imageHeight = imageV.frame.size.height
+            //获取文字的宽和高
+            let labelWidth  = titleL.intrinsicContentSize.width
+            let labelHeight = titleL.intrinsicContentSize.height
+            
+            var imageEdgeInsets = UIEdgeInsets.zero
+            var labelEdgeInsets = UIEdgeInsets.zero
+            //UIButton同时有图像和文字的正常状态---左图像右文字，间距为0
+            switch type {
             case .left:
-                titleEdgeInsets = UIEdgeInsets.init(top: 0, left: space, bottom: 0, right: 0)
-                imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: space)
+                //正常状态--只不过加了个间距
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: -space * 0.5, bottom: 0, right: space * 0.5)
+                labelEdgeInsets = UIEdgeInsets(top: 0, left: space * 0.5, bottom: 0, right: -space * 0.5)
             case .right:
-                let imageWidth = (imageView?.bounds.width ?? 0) + space
-                let titleWidth = (titleLabel?.bounds.width ?? 0) + space
-                titleEdgeInsets = UIEdgeInsets.init(top: 0, left: -imageWidth, bottom: 0, right: imageWidth)
-                imageEdgeInsets = UIEdgeInsets.init(top: 0, left: titleWidth, bottom: 0, right: -titleWidth)
+                //切换位置--左文字右图像
+                //图像：UIEdgeInsets的left是相对于UIButton的左边移动了labelWidth + space * 0.5，right相对于label的左边移动了-labelWidth - space * 0.5
+                imageEdgeInsets = UIEdgeInsets(top: 0, left: labelWidth + space * 0.5, bottom: 0, right: -labelWidth - space * 0.5)
+                labelEdgeInsets = UIEdgeInsets(top: 0, left: -imageWidth - space * 0.5, bottom: 0, right: imageWidth + space * 0.5)
+            case .top:
+                //切换位置--上图像下文字
+                /**图像的中心位置向右移动了labelWidth * 0.5，向上移动了-imageHeight * 0.5 - space * 0.5
+                 *文字的中心位置向左移动了imageWidth * 0.5，向下移动了labelHeight*0.5+space*0.5
+                 */
+                imageEdgeInsets = UIEdgeInsets(top: -imageHeight * 0.5 - space * 0.5, left: labelWidth * 0.5, bottom: imageHeight * 0.5 + space * 0.5, right: -labelWidth * 0.5)
+                labelEdgeInsets = UIEdgeInsets(top: labelHeight * 0.5 + space * 0.5, left: -imageWidth * 0.5, bottom: -labelHeight * 0.5 - space * 0.5, right: imageWidth * 0.5)
+            case .bottom:
+                //切换位置--下图像上文字
+                /**图像的中心位置向右移动了labelWidth * 0.5，向下移动了imageHeight * 0.5 + space * 0.5
+                 *文字的中心位置向左移动了imageWidth * 0.5，向上移动了labelHeight*0.5+space*0.5
+                 */
+                imageEdgeInsets = UIEdgeInsets(top: imageHeight * 0.5 + space * 0.5, left: labelWidth * 0.5, bottom: -imageHeight * 0.5 - space * 0.5, right: -labelWidth * 0.5)
+                labelEdgeInsets = UIEdgeInsets(top: -labelHeight * 0.5 - space * 0.5, left: -imageWidth * 0.5, bottom: labelHeight * 0.5 + space * 0.5, right: imageWidth * 0.5)
             }
+            self.titleEdgeInsets = labelEdgeInsets
+            self.imageEdgeInsets = imageEdgeInsets
         }
     }
 }

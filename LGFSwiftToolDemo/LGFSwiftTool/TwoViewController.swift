@@ -13,25 +13,28 @@ class TwoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        let vc = ChildViewController()
-        //        vc.view.frame = self.view.bounds
-        //        self.view.addSubview(vc.view)
-        //        self.addChild(vc)
-        //
-        //        let vc2 = ChildViewController()
-        //        vc2.view.frame = self.view.bounds
-        //        self.view.addSubview(vc2.view)
-        //        self.addChild(vc2)
-        //
-        //        let vc3 = ChildViewController()
-        //        vc3.view.frame = self.view.bounds
-        //        self.view.addSubview(vc3.view)
-        //        self.addChild(vc3)
-        lgf_RunTimer(self, S: 3.0) { (timer) in
+        // 发起按钮
+        let centerBtn = UIButton.init(type: .custom)
+        
+//        img.size = CGSize.init(width: 20, height: 20)
+        if #available(iOS 10.0, *) {
+            centerBtn.setImage(UIImage.init(color: UIColor.red, size: CGSize.init(width: 10, height: 10)), for: .normal)
+        } else {
+            // Fallback on earlier versions
+        }
+        centerBtn.setTitle("业务", for: .normal)
+        centerBtn.backgroundColor = UIColor.lightGray
+        centerBtn.setTitleColor(UIColor.black, for: .normal)
+        centerBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        self.view.addSubview(centerBtn)
+        centerBtn.frame = CGRect.init(x: 300, y: 300, w: 50, h: 50)
+        centerBtn.lgf_ImagePosition(at: .top, space: 5)
+        
+        Timer.lgf_RunTimer(self, S: 3.0) { (timer) in
             debugPrint(123123)
         }
         
-        lgf_After(S: 7.0) {
+        Timer.lgf_After(S: 7.0) {
 //            lgf_AutoBigSmallView.lgf_Dismiss()
         }
     }
@@ -41,7 +44,7 @@ class TwoViewController: UIViewController {
     }
     
     @IBAction func showHView(_ sender: UIButton) {
-        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true) { (type) in
+        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true, showType: .vertical) { (type) in
             if type == .small {
                 debugPrint("准备缩小")
             } else if type == .smallFinish {

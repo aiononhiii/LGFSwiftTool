@@ -36,12 +36,12 @@ public extension UIColor {
     }
     
     // MARK: -  随机颜色
-    func lgf_RandomColor() -> UIColor {
+    class func lgf_RandomColor() -> UIColor {
         return UIColor.init(Int(arc4random() % 256 / 255), Int(arc4random() % 256 / 255), Int(arc4random() % 256 / 255))
     }
     
     // MARK: -  随机灰度颜色
-    func lgf_RandomGrayColor() -> UIColor {
+    class func lgf_RandomGrayColor() -> UIColor {
         let randomNumber = (Int(arc4random() % 200) + 55) / 255
         return UIColor.init(randomNumber, randomNumber, randomNumber)
     }

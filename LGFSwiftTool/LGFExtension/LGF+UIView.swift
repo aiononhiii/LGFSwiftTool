@@ -263,6 +263,11 @@ public extension UIView {
     func lgf_SubViewEnabled(_ isUserInteractionEnabled: Bool) -> Void {
         self.subviews.forEach { $0.isUserInteractionEnabled = isUserInteractionEnabled }
     }
+    
+    // MARK: - 删除所有子控件
+    func lgf_SubViewRemove() -> Void {
+        self.subviews.forEach { $0.removeFromSuperview() }
+    }
 }
 
 #endif // canImport(UIKit)

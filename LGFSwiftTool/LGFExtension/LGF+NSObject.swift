@@ -39,6 +39,7 @@ public extension NSObjectProtocol {
 }
 
 private var lgf_NameKey: String = "lgf_NameKey"
+private var lgf_IDKey: String = "lgf_IDKey"
 
 public extension NSObject {
     // MARK: - 给 object 定义一个字符串名字(类似 view 的 tag)
@@ -48,6 +49,16 @@ public extension NSObject {
         }
         set(newValue) {
             objc_setAssociatedObject(self, &lgf_NameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
+        }
+    }
+    
+    // MARK: -  给 object 定义一个字符串 id
+    var lgf_ID: String? {
+        get {
+            return (objc_getAssociatedObject(self, &lgf_IDKey) as? String)
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &lgf_IDKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
         }
     }
 }

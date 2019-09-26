@@ -135,6 +135,110 @@ public extension UIImage {
         guard let image = context.makeImage() else { return self }
         return UIImage(cgImage: image, scale: 1, orientation: .up)
     }
+    
+    // MARK: - 压缩上传图片到指定字节
+    func lgf_CompressImage(_ image: UIImage, maxLength: Int) -> Data? {
+        let newSize = self.lgf_ScaleImage(image, imageLength: 300)
+        let newImage = self.lgf_ResizeImage(image, newSize: newSize)
+        var compress: CGFloat = 0.9
+        var data = newImage.jpegData(compressionQuality: compress)
+        while (data?.count)! > maxLength && compress > 0.01 {
+            compress -= 0.02
+            data = newImage.jpegData(compressionQuality: compress)
+        }
+        return data as Data?
+    }
+    
+    // MARK: - 通过指定图片最长边，获得等比例的图片size
+    func lgf_ScaleImage(_ image: UIImage, imageLength: CGFloat) -> CGSize {
+        var newWidth:CGFloat = 0.0
+        var newHeight:CGFloat = 0.0
+        let width = image.size.width
+        let height = image.size.height
+        if (width > imageLength || height > imageLength) {
+            if (width > height) {
+                newWidth = imageLength
+                newHeight = newWidth * height / width
+            } else if(height > width) {
+                newHeight = imageLength
+                newWidth = newHeight * width / height
+            } else {
+                newWidth = imageLength
+                newHeight = imageLength
+            }
+        } else {
+            newWidth = width
+            newHeight = height
+        }
+        return CGSize(width: newWidth, height: newHeight)
+    }
+    
+    // MARK: - 获得指定size的图片
+    func lgf_ResizeImage(_ image: UIImage, newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(newSize)
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    // MARK: - 根据原始图片生成压缩后的图片(最大宽或高为1280)
+    func lgf_ResizeOriginImage() -> UIImage {
+        //prepare constants
+        let width = self.size.width
+        let height = self.size.height
+        let scale = width/height
+        
+        var sizeChange = CGSize()
+        
+        if width <= 1280 && height <= 1280{ //图片宽或者高均小于或等于1280时图片尺寸保持不变，不改变图片大小
+            return self
+        }else if width > 1280 || height > 1280 {//宽或者高大于1280，但是图片宽度高度比小于或等于2，则将图片宽或者高取大的等比压缩至1280
+            
+            if scale <= 2 && scale >= 1 {
+                let changedWidth:CGFloat = 1280
+                let changedheight:CGFloat = changedWidth / scale
+                sizeChange = CGSize(width: changedWidth, height: changedheight)
+                
+            }else if scale >= 0.5 && scale <= 1 {
+                
+                let changedheight:CGFloat = 1280
+                let changedWidth:CGFloat = changedheight * scale
+                sizeChange = CGSize(width: changedWidth, height: changedheight)
+                
+            }else if width > 1280 && height > 1280 {//宽以及高均大于1280，但是图片宽高比大于2时，则宽或者高取小的等比压缩至1280
+                
+                if scale > 2 {//高的值比较小
+                    
+                    let changedheight:CGFloat = 1280
+                    let changedWidth:CGFloat = changedheight * scale
+                    sizeChange = CGSize(width: changedWidth, height: changedheight)
+                    
+                }else if scale < 0.5{//宽的值比较小
+                    
+                    let changedWidth:CGFloat = 1280
+                    let changedheight:CGFloat = changedWidth / scale
+                    sizeChange = CGSize(width: changedWidth, height: changedheight)
+                    
+                }
+            }else {//宽或者高，只有一个大于1280，并且宽高比超过2，不改变图片大小
+                return self
+            }
+        }
+        
+        UIGraphicsBeginImageContext(sizeChange)
+        
+        //draw resized image on Context
+        self.draw(in: CGRect.init(x: 0.0, y: 0.0, width: sizeChange.width, height: sizeChange.height))
+        
+        //create UIImage
+        let resizedImg = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return resizedImg!
+        
+    }
 }
 
 extension UIImage {

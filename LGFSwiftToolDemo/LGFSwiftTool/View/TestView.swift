@@ -30,16 +30,6 @@ class TestView: UIView {
         self.addSubview(label)
         label.lgf_AddTap(target: self, action: #selector(click))
         label.lgf_FillSuperview()
-        lgf_After(S: 2.0) {
-            let alertVC = UIAlertController.init(title: "提示", message: "视频通话已结束,如有需要请重新连接", preferredStyle: .alert)
-            let confirmAction1 = UIAlertAction.init(title: "否", style: .default) { (action) in
-            }
-            let confirmAction2 = UIAlertAction.init(title: "是", style: .default) { (action) in
-            }
-            alertVC.addAction(confirmAction1)
-            alertVC.addAction(confirmAction2)
-            UIApplication.shared.lgf_TopViewController!.present(alertVC, animated: true, completion: nil)
-        }
     }
     
     @objc func click() -> Void {

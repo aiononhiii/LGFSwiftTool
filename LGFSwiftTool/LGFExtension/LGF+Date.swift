@@ -30,6 +30,38 @@ public extension Date {
         comps?.day = day
         return calendar.date(byAdding: comps!, to: current) ?? Date()
     }
+    
+    // MARK: - 计算年龄 NSInteger
+    func lgf_AgeWithDateOfBirth() -> NSInteger {
+        let components1 = Calendar.current.dateComponents([.day, .month, .year], from: self)
+        let brithDateYear: Int = components1.year!
+        let brithDateDay: Int   = components1.day!
+        let brithDateMonth: Int = components1.month!
+        let components2 = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+        let currentDateYear: Int  = components2.year!
+        let currentDateDay: Int   = components2.day!
+        let currentDateMonth: Int = components2.month!
+        var iAge = currentDateYear - brithDateYear - 1
+        if ((currentDateMonth > brithDateMonth) || (currentDateMonth == brithDateMonth && currentDateDay >= brithDateDay)) {
+            iAge =  iAge + 1
+        }
+        return iAge
+    }
+    
+    // MARK: - 计算年龄 xx岁xx月xx天
+    func getAgeStr() -> String {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        var date: DateComponents = calendar.dateComponents([.year, .month, .day], from: self, to: currentDate)
+        return  "\(date.year ?? 0)岁\(date.month ?? 0)月\(date.day ?? 0)天"
+    }
+    
+    // MARK: - 计算年龄 "3000" 天数
+    func getAgeDayStr() -> String {
+        let b = Date().timeIntervalSince(self)
+        let age: Int = Int(b / (24 * 60 * 60))
+        return String(age)
+    }
 }
 
 #endif // canImport(Foundation)
