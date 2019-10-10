@@ -34,6 +34,49 @@ public enum lgf_TimeFormatType {
 
 public extension String {
     
+    // MARK: - 对象 转 json
+    static func lgf_JsonFrom(_ obj: Any) -> String {
+        if (!JSONSerialization.isValidJSONObject(obj)) {
+            print("无法解析出JSONString")
+            return ""
+        }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: obj, options: [])
+            return String(data: jsonData, encoding: .utf8) ?? ""
+        } catch { }
+        return ""
+    }
+    
+    // MARK: - json 转字典
+    func lgf_ToDictionary() -> [String: Any] {
+        let result = [String: Any]()
+        if let jsonData = self.data(using: String.Encoding.utf8) {
+            do {
+                if let jsonDic = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any] {
+                    return jsonDic
+                }
+            } catch {
+                debugPrint("ERROR: Invalid json!")
+            }
+        }
+        return result
+    }
+    
+    // MARK: - json 转数组
+    func lgf_ToDictionaryArray() -> [[String: Any]] {
+        let result = [[String: Any]]()
+        if let jsonData = self.data(using: String.Encoding.utf8) {
+            do {
+                if let jsonDic = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String: Any]] {
+                    return jsonDic
+                }
+            } catch {
+                debugPrint("ERROR: Invalid json!")
+            }
+        }
+        return result
+    }
+    
     // MARK: - 根据数字返回带单位字符串
     static func lgf_GetNumStrWithNum(num: Int, unitType: lgf_UnitType, unitStrType: lgf_UnitStrType) -> String {
         var str: String = ""
@@ -411,7 +454,7 @@ public extension String {
      匹配首尾空格的正则表达式：(^s*)|(s*$)
      匹配Email地址的正则表达式：w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*
      匹配网址URL的正则表达式：http://([w-]+.)+[w-]+(/[w- ./?%&=]*)?
-    */
+     */
     func lgf_NSPredicate(_ reg: String) -> Bool {
         let pre = NSPredicate(format: "SELF MATCHES %@", reg)
         if pre.evaluate(with: self) {

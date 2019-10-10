@@ -40,10 +40,20 @@ public extension UIColor {
         return UIColor.init(Int(arc4random() % 256 / 255), Int(arc4random() % 256 / 255), Int(arc4random() % 256 / 255))
     }
     
-    // MARK: -  随机灰度颜色
+    // MARK: - 随机灰度颜色
     class func lgf_RandomGrayColor() -> UIColor {
         let randomNumber = (Int(arc4random() % 200) + 55) / 255
         return UIColor.init(randomNumber, randomNumber, randomNumber)
+    }
+    
+    // MARK: - 返回HSBA模式颜色值
+    public var lgf_Hsba: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
+        var h: CGFloat = 0
+        var s: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return (h * 360, s, b, a)
     }
 }
 

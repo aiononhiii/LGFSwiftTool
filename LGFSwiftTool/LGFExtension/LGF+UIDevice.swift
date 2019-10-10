@@ -14,7 +14,7 @@ public extension UIDevice {
     // MARK: -  屏幕宽度
     static let lgf_ScreenW = UIScreen.main.bounds.width
     
-    // MARK: -  屏幕高度
+    // MARK: - 屏幕高度
     static let lgf_ScreenH = UIScreen.main.bounds.height
     
     // MARK: -  判断是否是 IphoneX 刘海机型
@@ -39,7 +39,11 @@ public extension UIDevice {
     
     // MARK: -  NavigationBar 高度
     class func lgf_NavBarH() -> CGFloat {
-        return lgf_IsIphoneX() ? 88.0 : 64.0
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 70.0
+        } else {
+            return lgf_IsIphoneX() ? 88.0 : 64.0
+        }
     }
     
     // MARK: -  TabBar 高度
