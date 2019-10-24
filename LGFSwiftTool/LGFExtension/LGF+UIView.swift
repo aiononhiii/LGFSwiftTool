@@ -10,6 +10,7 @@
 import UIKit
 
 private var lgf_ViewNameKey: String = "lgf_ViewNameKey"
+private var lgf_OldFrameKey: String = "lgf_OldFrameKey"
 
 public extension UIView {
     
@@ -20,6 +21,16 @@ public extension UIView {
         }
         set(newValue) {
             objc_setAssociatedObject(self, &lgf_ViewNameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
+        }
+    }
+    
+    // MARK: -  给 view 定义一个旧 frame 的赋值入口（通常用于修改 frame 后的回位）
+    var lgf_OldFrame: CGRect! {
+        get {
+            return (objc_getAssociatedObject(self, &lgf_OldFrameKey) as? CGRect) ?? .zero
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &lgf_OldFrameKey, newValue ?? .zero, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
         }
     }
     

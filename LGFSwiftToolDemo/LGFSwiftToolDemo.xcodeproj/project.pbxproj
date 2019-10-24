@@ -53,6 +53,7 @@
 		2B394E51234F3B760067AD69 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E46234F3B760067AD69 /* Info.plist */; };
 		2B394E52234F3B760067AD69 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E47234F3B760067AD69 /* ChildViewController.swift */; };
 		2B6C561E234C3369006066E3 /* LGF+ShouldAutorotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */; };
+		2BAE816123616BBE00C5CA35 /* LGFSwiftTool.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */; };
 		2BB0ED12233361C60099E6CB /* LGF+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */; };
 		2BF0350A234C5E22005F7701 /* LGFSwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF03509234C5E22005F7701 /* LGFSwiftPopMenu.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		2B394E46234F3B760067AD69 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B394E47234F3B760067AD69 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+ShouldAutorotate.swift"; sourceTree = "<group>"; };
+		2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LGFSwiftTool.podspec; path = ../LGFSwiftTool.podspec; sourceTree = "<group>"; };
 		2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UIButton.swift"; sourceTree = "<group>"; };
 		2BF03509234C5E22005F7701 /* LGFSwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGFSwiftPopMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 		18592E6922EEDFAE0026D84E = {
 			isa = PBXGroup;
 			children = (
+				2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */,
 				18592E8722EEE03F0026D84E /* LGFSwiftTool */,
 				2B394E39234F3B760067AD69 /* LGFSwiftToolDemo */,
 				18592E7322EEDFAE0026D84E /* Products */,
@@ -290,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BAE816123616BBE00C5CA35 /* LGFSwiftTool.podspec in Resources */,
 				2B394E51234F3B760067AD69 /* Info.plist in Resources */,
 				2B394E4B234F3B760067AD69 /* Main.storyboard in Resources */,
 				2B394E49234F3B760067AD69 /* Assets.xcassets in Resources */,
@@ -496,7 +500,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YU3566C3NH;
-				INFOPLIST_FILE = LGFSwiftTool/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LGFSwiftToolDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -517,7 +521,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YU3566C3NH;
-				INFOPLIST_FILE = LGFSwiftTool/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LGFSwiftToolDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
