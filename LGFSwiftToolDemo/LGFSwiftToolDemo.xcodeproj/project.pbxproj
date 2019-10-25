@@ -70,7 +70,7 @@
 		18309F2222F412AA002CCDE9 /* LGF+CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+CGRect.swift"; sourceTree = "<group>"; };
 		18309F2422F4138E002CCDE9 /* LGF+Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+Timer.swift"; sourceTree = "<group>"; };
 		18309F2622F4344A002CCDE9 /* LGF+UISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UISlider.swift"; sourceTree = "<group>"; };
-		18592E7222EEDFAE0026D84E /* LGFSwiftTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LGFSwiftTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18592E7222EEDFAE0026D84E /* LGFSwiftToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LGFSwiftToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18592E8A22EEE03F0026D84E /* LGF+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGF+String.swift"; sourceTree = "<group>"; };
 		18592E8B22EEE03F0026D84E /* LGF+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGF+UIColor.swift"; sourceTree = "<group>"; };
 		18592E8C22EEE03F0026D84E /* LGF+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LGF+UIView.swift"; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		18592E7322EEDFAE0026D84E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18592E7222EEDFAE0026D84E /* LGFSwiftTool.app */,
+				18592E7222EEDFAE0026D84E /* LGFSwiftToolDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 			);
 			name = LGFSwiftTool;
 			productName = LGFSwiftTool;
-			productReference = 18592E7222EEDFAE0026D84E /* LGFSwiftTool.app */;
+			productReference = 18592E7222EEDFAE0026D84E /* LGFSwiftToolDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -500,14 +500,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YU3566C3NH;
-				INFOPLIST_FILE = "$(SRCROOT)/LGFSwiftToolDemo/Info.plist";
+				INFOPLIST_FILE = LGFSwiftToolDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LGFSwiftToolDemo.LGFSwiftTool;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LGFSwiftToolDemo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,14 +521,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YU3566C3NH;
-				INFOPLIST_FILE = "$(SRCROOT)/LGFSwiftToolDemo/Info.plist";
+				INFOPLIST_FILE = LGFSwiftToolDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LGFSwiftToolDemo.LGFSwiftTool;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LGFSwiftToolDemo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

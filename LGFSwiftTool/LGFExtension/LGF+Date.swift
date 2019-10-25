@@ -20,15 +20,14 @@ public extension Date {
     }
     
     // MARK: - 获取加减 ?年 ?月 ?天 时间
-    static func lgf_CurrentDateToWantDate(year:Int, month:Int, day:Int)-> Date {
-        let current = Date()
+    func lgf_CurrentDateToWantDate(year:Int, month:Int, day:Int)-> Date {
         let calendar = Calendar(identifier: .gregorian)
         var comps: DateComponents?
-        comps = calendar.dateComponents([.year,.month,.day], from: current)
+        comps = calendar.dateComponents([.year,.month,.day], from: self)
         comps?.year = year
         comps?.month = month
         comps?.day = day
-        return calendar.date(byAdding: comps!, to: current) ?? Date()
+        return calendar.date(byAdding: comps!, to: self) ?? Date()
     }
     
     // MARK: - 计算年龄 NSInteger

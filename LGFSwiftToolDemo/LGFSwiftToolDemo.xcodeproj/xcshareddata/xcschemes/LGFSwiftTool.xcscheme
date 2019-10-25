@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18592E7122EEDFAE0026D84E"
-            BuildableName = "LGFSwiftTool.app"
+            BuildableName = "LGFSwiftToolDemo.app"
             BlueprintName = "LGFSwiftTool"
-            ReferencedContainer = "container:LGFSwiftTool.xcodeproj">
+            ReferencedContainer = "container:LGFSwiftToolDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18592E7122EEDFAE0026D84E"
-            BuildableName = "LGFSwiftTool.app"
+            BuildableName = "LGFSwiftToolDemo.app"
             BlueprintName = "LGFSwiftTool"
-            ReferencedContainer = "container:LGFSwiftTool.xcodeproj">
+            ReferencedContainer = "container:LGFSwiftToolDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
