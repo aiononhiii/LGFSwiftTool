@@ -30,7 +30,7 @@ public extension UIView {
             return (objc_getAssociatedObject(self, &lgf_OldFrameKey) as? CGRect) ?? .zero
         }
         set(newValue) {
-            objc_setAssociatedObject(self, &lgf_OldFrameKey, newValue ?? .zero, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &lgf_OldFrameKey, newValue ?? .zero, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
         }
     }
     

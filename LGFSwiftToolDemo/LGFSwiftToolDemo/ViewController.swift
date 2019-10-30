@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let (r, g, b, a) = UIColor.darkGray.components.rgba
+//        let (r, g, b, a) = UIColor.darkGray.components.rgba
         
         lgf_Titles = ["7", "8", "9"]
         debugPrint(String.init(format: "当前选中:%@(%tu), 当前未选中:%@(%tu)", "22", 555,  "33", 444))

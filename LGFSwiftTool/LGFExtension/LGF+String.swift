@@ -157,7 +157,7 @@ public extension String {
     ///   - format: 格式化类型
     /// - Returns: 时间字符串
     static func lgf_TimeStampSwitchTimeStr(timeStamp: String, format: String) -> String {
-        if timeStamp.count == 0 {
+        if timeStamp.count == 0 || Int(timeStamp) == nil {
             return ""
         }
         let formatStr = format.lgf_IsNull() ? "YYYY-MM-dd HH:mm:ss" : format

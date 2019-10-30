@@ -43,15 +43,14 @@
 		2B06E6C9233B39A2009177F0 /* LGF+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B06E6C8233B39A2009177F0 /* LGF+UITextView.swift */; };
 		2B394E48234F3B760067AD69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E3A234F3B760067AD69 /* ViewController.swift */; };
 		2B394E49234F3B760067AD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3B234F3B760067AD69 /* Assets.xcassets */; };
-		2B394E4A234F3B760067AD69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3C234F3B760067AD69 /* LaunchScreen.storyboard */; };
-		2B394E4B234F3B760067AD69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3E234F3B760067AD69 /* Main.storyboard */; };
 		2B394E4C234F3B760067AD69 /* ModelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E40234F3B760067AD69 /* ModelModel.swift */; };
 		2B394E4D234F3B760067AD69 /* TestViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E42234F3B760067AD69 /* TestViewTwo.swift */; };
 		2B394E4E234F3B760067AD69 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E43234F3B760067AD69 /* TestView.swift */; };
 		2B394E4F234F3B760067AD69 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E44234F3B760067AD69 /* TwoViewController.swift */; };
 		2B394E50234F3B760067AD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E45234F3B760067AD69 /* AppDelegate.swift */; };
-		2B394E51234F3B760067AD69 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E46234F3B760067AD69 /* Info.plist */; };
 		2B394E52234F3B760067AD69 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394E47234F3B760067AD69 /* ChildViewController.swift */; };
+		2B57D9C62366C8AE007F3E4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3C234F3B760067AD69 /* LaunchScreen.storyboard */; };
+		2B57D9C72366C8AE007F3E4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3E234F3B760067AD69 /* Main.storyboard */; };
 		2B6C561E234C3369006066E3 /* LGF+ShouldAutorotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */; };
 		2BAE816123616BBE00C5CA35 /* LGFSwiftTool.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */; };
 		2BB0ED12233361C60099E6CB /* LGF+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */; };
@@ -103,8 +102,8 @@
 		2B394E43234F3B760067AD69 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		2B394E44234F3B760067AD69 /* TwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		2B394E45234F3B760067AD69 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B394E46234F3B760067AD69 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B394E47234F3B760067AD69 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
+		2B57D9C32366C897007F3E4E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+ShouldAutorotate.swift"; sourceTree = "<group>"; };
 		2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LGFSwiftTool.podspec; path = ../LGFSwiftTool.podspec; sourceTree = "<group>"; };
 		2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UIButton.swift"; sourceTree = "<group>"; };
@@ -212,6 +211,7 @@
 		2B394E39234F3B760067AD69 /* LGFSwiftToolDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2B57D9C32366C897007F3E4E /* Info.plist */,
 				2B394E3A234F3B760067AD69 /* ViewController.swift */,
 				2B394E3B234F3B760067AD69 /* Assets.xcassets */,
 				2B394E3C234F3B760067AD69 /* LaunchScreen.storyboard */,
@@ -220,7 +220,6 @@
 				2B394E41234F3B760067AD69 /* View */,
 				2B394E44234F3B760067AD69 /* TwoViewController.swift */,
 				2B394E45234F3B760067AD69 /* AppDelegate.swift */,
-				2B394E46234F3B760067AD69 /* Info.plist */,
 				2B394E47234F3B760067AD69 /* ChildViewController.swift */,
 			);
 			path = LGFSwiftToolDemo;
@@ -293,11 +292,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B57D9C62366C8AE007F3E4E /* LaunchScreen.storyboard in Resources */,
+				2B57D9C72366C8AE007F3E4E /* Main.storyboard in Resources */,
 				2BAE816123616BBE00C5CA35 /* LGFSwiftTool.podspec in Resources */,
-				2B394E51234F3B760067AD69 /* Info.plist in Resources */,
-				2B394E4B234F3B760067AD69 /* Main.storyboard in Resources */,
 				2B394E49234F3B760067AD69 /* Assets.xcassets in Resources */,
-				2B394E4A234F3B760067AD69 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
