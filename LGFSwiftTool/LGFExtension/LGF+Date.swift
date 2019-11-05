@@ -19,6 +19,53 @@ public extension Date {
         return time
     }
     
+    // MARK: - 本年开始日期
+    static func lgf_YearStartDate() -> Date {
+        let date = Date()
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(Set<Calendar.Component>([.year]), from: date)
+        let startOfYear = calendar.date(from: components)!
+        return startOfYear
+    }
+    
+    // MARK: - 本年结束日期
+    static func lgf_YearEndDate(returnEndTime: Bool = false) -> Date {
+        let calendar = NSCalendar.current
+        var components = DateComponents()
+        components.year = 1
+        if returnEndTime {
+            components.second = -1
+        } else {
+            components.day = -1
+        }
+        let endOfYear = calendar.date(byAdding: components, to: Date.lgf_YearStartDate())!
+        return endOfYear
+    }
+    
+    // MARK: - 本月开始日期
+    static func lgf_MonthStartDate() -> Date {
+        let date = Date()
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents(
+            Set<Calendar.Component>([.year, .month]), from: date)
+        let startOfMonth = calendar.date(from: components)!
+        return startOfMonth
+    }
+    
+    // MARK: - 本月结束日期
+    static func lgf_MonthEndDate(returnEndTime:Bool = false) -> Date {
+        let calendar = NSCalendar.current
+        var components = DateComponents()
+        components.month = 1
+        if returnEndTime {
+            components.second = -1
+        } else {
+            components.day = -1
+        }
+        let endOfMonth =  calendar.date(byAdding: components, to: lgf_MonthStartDate())!
+        return endOfMonth
+    }
+    
     // MARK: - 获取加减 ?年 ?月 ?天 时间
     func lgf_CurrentDateToWantDate(year:Int, month:Int, day:Int)-> Date {
         let calendar = Calendar(identifier: .gregorian)
