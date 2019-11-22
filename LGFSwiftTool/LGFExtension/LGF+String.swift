@@ -77,6 +77,62 @@ public extension String {
         return result
     }
     
+    // MARK: - 判断字符串中有没有中文字符
+    func lgf_IsIncludeChinese() -> Bool {
+        for ch in self.unicodeScalars {
+            // 中文字符范围：0x4e00 ~ 0x9fff
+            if (0x4e00 < ch.value  && ch.value < 0x9fff) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    // MARK: - 获取汉字拼音
+    func lgf_TransformToPinyin() -> String {
+        if lgf_IsIncludeChinese() {
+            let stringRef = NSMutableString(string: self) as CFMutableString
+            // 转换为带音标的拼音
+            CFStringTransform(stringRef,nil, kCFStringTransformToLatin, false);
+            // 去掉音标
+            CFStringTransform(stringRef, nil, kCFStringTransformStripCombiningMarks, false);
+            var pinyin = stringRef as String;
+            // 去掉空格
+            pinyin = pinyin.replacingOccurrences(of: " ", with: "")
+            return pinyin
+        } else {
+            return self
+        }
+    }
+    
+    // MARK: - 获取拼音首字母（大写字母）
+    func lgf_GetPinyinHead() -> String {
+        // 字符串转换为首字母大写
+        let pinyin = lgf_TransformToPinyin().capitalized
+        return pinyin.first?.description ?? ""
+    }
+    
+    // MARK: - 传入base64的字符串，转换成UIImage
+    func lgf_Base64StringToUIImage() -> UIImage? {
+        var str = self
+        // 1、判断用户传过来的base64的字符串是否是以data开口的，如果是以data开头的，那么就获取字符串中的base代码，然后在转换，如果不是以data开头的，那么就直接转换
+        if self.hasPrefix("data:image") {
+            guard let newBase64String = str.components(separatedBy: ",").last else {
+                return nil
+            }
+            str = newBase64String
+        }
+        // 2、将处理好的base64String代码转换成NSData
+        guard let imgNSData = NSData(base64Encoded: str, options: NSData.Base64DecodingOptions()) else {
+            return nil
+        }
+        // 3、将NSData的图片，转换成UIImage
+        guard let codeImage = UIImage(data: imgNSData as Data) else {
+            return nil
+        }
+        return codeImage
+    }
+    
     // MARK: - 根据数字返回带单位字符串
     static func lgf_GetNumStrWithNum(num: Int, unitType: lgf_UnitType, unitStrType: lgf_UnitStrType) -> String {
         var str: String = ""
