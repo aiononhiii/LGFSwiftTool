@@ -63,12 +63,27 @@ public extension String {
     }
     
     // MARK: - json 转数组
+    func lgf_ToArray() -> [String] {
+        let result = [String]()
+        if let jsonData = self.data(using: String.Encoding.utf8) {
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String] {
+                    return jsonArray
+                }
+            } catch {
+                debugPrint("ERROR: Invalid json!")
+            }
+        }
+        return result
+    }
+    
+    // MARK: - json 转字典数组
     func lgf_ToDictionaryArray() -> [[String: Any]] {
         let result = [[String: Any]]()
         if let jsonData = self.data(using: String.Encoding.utf8) {
             do {
-                if let jsonDic = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String: Any]] {
-                    return jsonDic
+                if let jsonDicArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String: Any]] {
+                    return jsonDicArray
                 }
             } catch {
                 debugPrint("ERROR: Invalid json!")
