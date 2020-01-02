@@ -92,6 +92,13 @@ public extension String {
         return result
     }
     
+    // MARK: - 去除特殊字符
+    func lgf_ClearSpecialChar() -> String {
+        let pattern: String = "[^a-zA-Z0-9\u{4e00}-\u{9fa5}]"
+        let express = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        return express.stringByReplacingMatches(in: self, options: [], range: NSMakeRange(0, self.count), withTemplate: "")
+    }
+    
     // MARK: - 判断字符串中有没有中文字符
     func lgf_IsIncludeChinese() -> Bool {
         for ch in self.unicodeScalars {
