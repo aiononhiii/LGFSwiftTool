@@ -98,7 +98,7 @@ public extension Date {
     func getAgeStr() -> String {
         let currentDate = Date()
         let calendar = Calendar.current
-        var date: DateComponents = calendar.dateComponents([.year, .month, .day], from: self, to: currentDate)
+        let date: DateComponents = calendar.dateComponents([.year, .month, .day], from: self, to: currentDate)
         return  "\(date.year ?? 0)岁\(date.month ?? 0)月\(date.day ?? 0)天"
     }
     

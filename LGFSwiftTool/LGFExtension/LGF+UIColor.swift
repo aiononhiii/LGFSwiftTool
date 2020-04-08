@@ -47,7 +47,7 @@ public extension UIColor {
     }
     
     // MARK: - 返回HSBA模式颜色值
-    public var lgf_Hsba: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
+    var lgf_Hsba: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
         var h: CGFloat = 0
         var s: CGFloat = 0
         var b: CGFloat = 0

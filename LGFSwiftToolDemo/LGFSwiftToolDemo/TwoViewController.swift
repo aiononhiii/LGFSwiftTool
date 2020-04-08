@@ -44,7 +44,7 @@ class TwoViewController: UIViewController {
     }
     
     @IBAction func showHView(_ sender: UIButton) {
-        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true, showType: .vertical) { (type) in
+        lgf_AutoBigSmallView.lgf_Show(smallF: CGRect.init(x: 20, y: 20, width: 100, height: 150), smaleCR: 5, isBigHorizontal: true, showType: .horizontal) { (type) in
             if type == .small {
                 debugPrint("准备缩小")
             } else if type == .smallFinish {
