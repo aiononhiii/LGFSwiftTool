@@ -12,7 +12,8 @@ import Foundation
 
 public extension Timer {
     // MARK: - 初始化一个定时器
-    class func lgf_RunTimer(_  target: UIViewController!, S: TimeInterval, handler: @escaping (Timer?) -> Void) -> Void {
+    @discardableResult
+    class func lgf_RunTimer(_  target: UIViewController!, S: TimeInterval, handler: @escaping (Timer?) -> Void) -> Timer {
         let fireDate = CFAbsoluteTimeGetCurrent()
         let runLoop = CFRunLoopGetCurrent()
         let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, S, 0, 0) { [weak target] (timer) in
@@ -25,6 +26,7 @@ public extension Timer {
             }
         }
         CFRunLoopAddTimer(runLoop, timer, CFRunLoopMode.commonModes)
+        return timer!
     }
     
     // MARK: - 延时执行

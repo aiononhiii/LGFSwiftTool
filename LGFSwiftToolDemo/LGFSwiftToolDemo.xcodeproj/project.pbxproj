@@ -52,6 +52,7 @@
 		2B57D9C62366C8AE007F3E4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3C234F3B760067AD69 /* LaunchScreen.storyboard */; };
 		2B57D9C72366C8AE007F3E4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B394E3E234F3B760067AD69 /* Main.storyboard */; };
 		2B6C561E234C3369006066E3 /* LGF+ShouldAutorotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */; };
+		2BAC0872246D1AD90085A1A7 /* LGF+WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC0871246D1AD90085A1A7 /* LGF+WKWebView.swift */; };
 		2BAE816123616BBE00C5CA35 /* LGFSwiftTool.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */; };
 		2BB0ED12233361C60099E6CB /* LGF+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */; };
 		2BF0350A234C5E22005F7701 /* LGFSwiftPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF03509234C5E22005F7701 /* LGFSwiftPopMenu.swift */; };
@@ -105,6 +106,7 @@
 		2B394E47234F3B760067AD69 /* ChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		2B57D9C32366C897007F3E4E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+ShouldAutorotate.swift"; sourceTree = "<group>"; };
+		2BAC0871246D1AD90085A1A7 /* LGF+WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+WKWebView.swift"; sourceTree = "<group>"; };
 		2BAE816023616BBE00C5CA35 /* LGFSwiftTool.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LGFSwiftTool.podspec; path = ../LGFSwiftTool.podspec; sourceTree = "<group>"; };
 		2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LGF+UIButton.swift"; sourceTree = "<group>"; };
 		2BF03509234C5E22005F7701 /* LGFSwiftPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGFSwiftPopMenu.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				2BB0ED11233361C60099E6CB /* LGF+UIButton.swift */,
 				2B06E6C8233B39A2009177F0 /* LGF+UITextView.swift */,
 				2B6C561D234C3369006066E3 /* LGF+ShouldAutorotate.swift */,
+				2BAC0871246D1AD90085A1A7 /* LGF+WKWebView.swift */,
 			);
 			path = LGFExtension;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				18F5528C22F2C8EF006DA8E8 /* LGFAutoBigSmallView.swift in Sources */,
 				18F5528722F1664D006DA8E8 /* LGF+UITableView.swift in Sources */,
 				18309F2522F4138E002CCDE9 /* LGF+Timer.swift in Sources */,
+				2BAC0872246D1AD90085A1A7 /* LGF+WKWebView.swift in Sources */,
 				18F5528922F2B1D4006DA8E8 /* LGF+UICollectionView.swift in Sources */,
 				18592E9322EEE03F0026D84E /* LGFShowClassName.swift in Sources */,
 				18F5529B22F3CEB6006DA8E8 /* LGF+Array.swift in Sources */,
