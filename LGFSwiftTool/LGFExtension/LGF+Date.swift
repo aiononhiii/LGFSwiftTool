@@ -11,7 +11,19 @@ import Foundation
 
 public extension Date {
     
-    // MARK: - 返回格式化字符串
+    // MARK: - 返回时间戳
+    func lgf_TimeStamp() -> Int {
+        let interval = Int(round(self.timeIntervalSince1970 * 1000))
+        return interval
+    }
+    
+    // MARK: - 返回时间戳字符串
+    func lgf_TimeStampString() -> String {
+        let interval = Int(round(self.timeIntervalSince1970 * 1000))
+        return interval.description
+    }
+    
+    // MARK: - 返回格式化字符串 yyyy-MM-dd HH:mm:ss
     func lgf_TimeStr(_ format: String?) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format ?? "yyyyMMdd"

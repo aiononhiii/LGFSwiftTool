@@ -7,6 +7,7 @@
 //
 
 #if canImport(UIKit)
+#if canImport(WebKit)
 import UIKit
 import WebKit
 
@@ -16,15 +17,6 @@ typealias NewerClosureType =  @convention(c) (Any, Selector, UnsafeRawPointer, B
 public extension WKWebView {
     
     /// 这个属性UIWebview有，WKWebView要自己实现
-    var lgf_KeyboardDisplayRequiresUserAction: Bool? {
-        set {
-            setLgf_KeyboardRequiresUserInteraction(newValue ?? true)
-        }
-        get {
-            return self.lgf_KeyboardDisplayRequiresUserAction
-        }
-    }
-    
     func setLgf_KeyboardRequiresUserInteraction( _ value: Bool) {
         guard let WKContentViewClass: AnyClass = NSClassFromString("WKContentView") else {
             print("Cannot find the WKContentView class")
@@ -65,5 +57,5 @@ public extension WKWebView {
     }
     
 }
-
+#endif
 #endif // canImport(UIKit)

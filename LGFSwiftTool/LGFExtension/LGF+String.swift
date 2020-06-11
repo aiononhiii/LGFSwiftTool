@@ -235,9 +235,6 @@ public extension String {
     ///   - format: 格式化类型
     /// - Returns: 时间字符串
     static func lgf_TimeStampSwitchTimeStr(timeStamp: String, format: String) -> String {
-        if timeStamp.count == 0 || Int(timeStamp) == nil {
-            return ""
-        }
         let formatStr = format.lgf_IsNull() ? "YYYY-MM-dd HH:mm:ss" : format
         let formatter = DateFormatter.init()
         formatter.dateStyle = .medium
@@ -245,14 +242,22 @@ public extension String {
         formatter.dateFormat = formatStr
         let timeZone = TimeZone.current
         formatter.timeZone = timeZone
-        var newTimeStamp: Int = Int(timeStamp)!
+        let confromTimespStr = formatter.string(from: timeStamp.lgf_TimeStampToDate())
+        debugPrint("将某个时间戳转化成 时间字符串----confromTimespStr:%@", confromTimespStr)
+        return confromTimespStr
+    }
+    
+    // MARK: - 将某个时间戳转化成 Date
+    func lgf_TimeStampToDate() -> Date {
+        if self.count == 0 || Int(self) == nil {
+            return Date()
+        }
+        var newTimeStamp = TimeInterval(self)!
         if newTimeStamp > 1000000000 {
             newTimeStamp = newTimeStamp / 1000
         }
-        let confromTimesp = Date.init(timeIntervalSince1970: TimeInterval(newTimeStamp))
-        let confromTimespStr = formatter.string(from: confromTimesp)
-        debugPrint("将某个时间戳转化成 时间字符串----confromTimespStr:%@", confromTimespStr)
-        return confromTimespStr
+        let date = Date.init(timeIntervalSince1970: newTimeStamp)
+        return date
     }
     
     // MARK: - 是否为空

@@ -30,13 +30,10 @@ class TwoViewController: UIViewController {
         centerBtn.frame = CGRect.init(x: 300, y: 300, w: 50, h: 50)
         centerBtn.lgf_ImagePosition(at: .top, space: 5)
         
-        Timer.lgf_RunTimer(self, S: 3.0) { (timer) in
-            debugPrint(123123)
-        }
         
-        Timer.lgf_After(S: 7.0) {
-//            lgf_AutoBigSmallView.lgf_Dismiss()
-        }
+        let fff = "1591839235323".lgf_TimeStampToDate().lgf_TimeStampString()
+        
+        
     }
     
     deinit {
