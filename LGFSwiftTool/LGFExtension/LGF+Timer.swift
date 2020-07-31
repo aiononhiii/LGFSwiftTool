@@ -30,12 +30,17 @@ public extension Timer {
     }
     
     // MARK: - 延时执行
-    class func lgf_After(S: Double, after: @escaping () -> Void) {
-        lgf_After(S: S, queue: DispatchQueue.main, after: after)
+    @discardableResult
+    class func lgf_After(S: Double, after: @escaping () -> Void) -> DispatchWorkItem {
+        return lgf_After(S: S, queue: DispatchQueue.main, after: after)
     }
-    class func lgf_After(S: Double, queue: DispatchQueue, after: @escaping () -> Void) {
+    
+    @discardableResult
+    class func lgf_After(S: Double, queue: DispatchQueue, after: @escaping () -> Void) -> DispatchWorkItem {
         let time = DispatchTime.now() + Double(Int64(S * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        queue.asyncAfter(deadline: time, execute: after)
+        let wAfter = DispatchWorkItem.init(block: after)
+        queue.asyncAfter(deadline: time, execute: wAfter)
+        return wAfter
     }
 }
 

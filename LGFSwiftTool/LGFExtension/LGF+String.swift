@@ -260,6 +260,19 @@ public extension String {
         return date
     }
     
+    // MARK: - 将某个时间字符串转化成 Date
+    func lgf_ToDate(format: String) -> Date {
+        let formatStr = format.lgf_IsNull() ? "YYYY-MM-dd HH:mm:ss" : format
+        let formatter = DateFormatter.init()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        formatter.dateFormat = formatStr
+        let timeZone = TimeZone.current
+        formatter.timeZone = timeZone
+        let date = formatter.date(from: self)
+        return date ?? Date()
+    }
+    
     // MARK: - 是否为空
     func lgf_IsNull() -> Bool {
         let str: String = self.trimmingCharacters(in: .whitespaces)

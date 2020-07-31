@@ -20,7 +20,7 @@ public extension UIColor {
     }
     
     // MARK: - hex 16 进制颜色 传入(String) "000000"
-    convenience init?(lgf_HexString: String, _ lgf_Alpha: Double = 1.0) {
+    convenience init!(lgf_HexString: String, _ lgf_Alpha: Double = 1.0) {
         let scanner = Scanner(string: lgf_HexString.replacingOccurrences(of: "#", with: ""))
         var rgbHex: UInt32 = 0
         guard scanner.scanHexInt32(&rgbHex) else {
